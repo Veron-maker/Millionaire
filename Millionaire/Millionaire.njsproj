@@ -36,12 +36,34 @@
     <Content Include="index.html">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="resourses\base\game.jpg" />
     <Content Include="resourses\base\JavaScript.js">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="resourses\base\logo.png" />
+    <Content Include="resourses\base\menu.jpg" />
+    <Content Include="resourses\base\results.jpg" />
+    <Content Include="resourses\base\rules.jpg" />
+    <Content Include="resourses\buttons\game\answer\answer-actively.svg" />
+    <Content Include="resourses\buttons\game\answer\answer-disabled.svg" />
+    <Content Include="resourses\buttons\game\answer\answer-inactively.svg" />
+    <Content Include="resourses\buttons\game\back\back-actively.svg" />
+    <Content Include="resourses\buttons\game\back\back-inactively.svg" />
+    <Content Include="resourses\buttons\game\restart\restart-actively.svg" />
+    <Content Include="resourses\buttons\game\restart\restart-inactively.svg" />
+    <Content Include="resourses\buttons\home\button-results.svg" />
+    <Content Include="resourses\buttons\home\button-rules.svg" />
+    <Content Include="resourses\buttons\home\button-start-actively.svg" />
+    <Content Include="resourses\buttons\home\button-start-inactively.svg" />
+    <Content Include="resourses\buttons\home\start\button-start-actively.svg" />
+    <Content Include="resourses\buttons\home\start\button-start-inactively.svg" />
+    <Content Include="resourses\game\question.svg" />
     <Content Include="server.js" />
     <Content Include="package.json" />
     <Content Include="README.md" />
+    <Content Include="styles.css">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="tsconfig.json">
       <SubType>Code</SubType>
     </Content>
@@ -57,9 +79,16 @@
   <ItemGroup>
     <Folder Include="dist\" />
     <Folder Include="resourses\" />
+    <Folder Include="resourses\buttons\game\" />
+    <Folder Include="resourses\buttons\game\answer\" />
+    <Folder Include="resourses\buttons\game\back\" />
+    <Folder Include="resourses\buttons\game\restart\" />
+    <Folder Include="resourses\buttons\home\" />
+    <Folder Include="resourses\buttons\home\start\" />
     <Folder Include="resourses\home\" />
     <Folder Include="resourses\game\" />
     <Folder Include="resourses\base\" />
+    <Folder Include="resourses\buttons\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />
   <ProjectExtensions>

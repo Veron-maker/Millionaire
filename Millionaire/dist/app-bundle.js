@@ -122,7 +122,7 @@ var Hello = /** @class */ (function (_super) {
     return Hello;
 }(React.Component));
 exports.Hello = Hello;
-ReactDOM.render(React.createElement(Hello, null), document.getElementById('root'));
+//ReactDOM.render(<Hello />, document.getElementById('root'));
 
 
 /***/ }),

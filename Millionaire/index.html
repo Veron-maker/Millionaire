@@ -4,18 +4,121 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
+    <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <div id="root"></div>
     <!-- scripts -->
     <script src="./dist/app-bundle.js"></script>
 
-    <div class="home">
-        <img class="background-main" name='home' src='image1.jpg' alt="Здесь должно быть фото заднего фона">
+    <div class="home">        
+        <div class="logo" id="home">
+            <div class="stroke" id="home"></div>
+            <div class="icon" id="home">
+                <img src="resourses/base/logo.png" alt="Здесь д.б. логотип" />
+            </div>
+        </div>
+        <div class="menu">
+            <button class="button-start">
+                <span id="home"></span>
+            </button>
+        </div>
     </div>
 
     <div class="game">
+        <div class="points">
+            <table id="points-table">
+                <tr>
+                    <td><p class="unvanish-sum">Несгораемая сумма</p></td>
+                    <td><p class="unvanish-sum" id="point">0</p></td>
+                </tr>
+                <tr>
+                    <td><p class="current-sum">Текущая сумма</p></td>
+                    <td><p class="current-sum" id="point">0</p></td>
+                </tr>
+            </table>            
+        </div>
+        <div class="question-answers">
+            <div class="question">
+                Вопрос
+            </div>
+            <div class="answers">
+                <table id="answer-table">
+                    <tr>
+                        <td>
+                            <button class="button-answer">
+                                <table id="text-button">
+                                    <tr>
+                                        <td id="idAnswer">
+                                            <span id="idAnswer">А.</span>
+                                        </td>
+                                        <td id="answer">
+                                            <span id="answer1">А</span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </button>
+                        </td>
+                        <td>
+                            <button class="button-answer">
+                                <table id="text-button">
+                                    <tr>
+                                        <td id="idAnswer">
+                                            <span id="idAnswer">C.</span>
+                                        </td>
+                                        <td id="answer">
+                                            <span id="answer3">C</span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button class="button-answer">
+                                <table id="text-button">
+                                    <tr>
+                                        <td id="idAnswer">
+                                            <span id="idAnswer">B.</span>
+                                        </td>
+                                        <td id="answer">
+                                            <span id="answer2">B</span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </button>
+                        </td>
+                        <td>
+                            <button class="button-answer">
+                                <table id="text-button">
+                                    <tr>
+                                        <td id="idAnswer">
+                                            <span id="idAnswer">D.</span>
+                                        </td>
+                                        <td id="answer">
+                                            <span id="answer4">D</span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="menu-game">
+            <ul id="menu-table">
+                <li>
+                    <button class="button-exit"></button>
+                </li>
+                <li>
+                    <button class="button-restart"></button>
+                </li>
+            </ul>
+        </div>
+        <div class="hints">
 
+        </div>
     </div>
 </body>
 </html>

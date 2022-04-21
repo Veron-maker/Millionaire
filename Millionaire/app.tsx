@@ -11,4 +11,4 @@ export class Hello extends React.Component {
     }
 }
 
-ReactDOM.render(<Hello />, document.getElementById('root'));
+//ReactDOM.render(<Hello />, document.getElementById('root'));
