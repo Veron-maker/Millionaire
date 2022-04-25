@@ -174,7 +174,7 @@ div .question {
 }
 
 div .question-text {
-    width: 65%;
+    width: 60%;
     height: 60%;
     display: flex;
     justify-content: center;
@@ -234,6 +234,7 @@ table.text-button td.idAnswer{
 
     table.text-button td.answer {
         padding: 0px;
+        width: 80%;
     }
 
 ul {
@@ -258,6 +259,7 @@ p {
     display: flex;
     align-items: center;
     margin: auto;
+    text-align: center;
 }
 
     p.unvanish-sum {
