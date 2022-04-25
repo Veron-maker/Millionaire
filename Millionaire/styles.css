@@ -26,40 +26,34 @@ html, body {
     background: url('resourses/base/menu.jpg') center no-repeat fixed;
     top: 0px;
     left: 0px;
-    -khtml-background-size: cover;
-    -moz-background-size: cover;
-    -ms-background-size: cover;
-    -o-background-size: cover;
-    -webkit-background-size: cover;
     background-size: cover;
 }
 
 .menu {
-    width: 50%;
+    width: 21%;
     height: 40%;
     top: 60%;
-    left: 50%;
-    margin-left: -25%;
+    left: 39.5%;
     position: absolute;
 }
 
 div .logo#home {
     position: relative;
     width: 100%;
+
 }
 
 div .icon#home {
     margin: auto;
     position: absolute;
-    left: 50%;
-    margin-left: -15%;
+    width: 40%;
+    left: 36%;
 }
 
 .stroke#home {
     background: linear-gradient(180deg, rgba(185, 76, 237, 0.2) 16.19%, rgba(111, 18, 155, 0.192) 50.47%, rgba(181, 85, 227, 0.192) 86.04%);
     filter: blur(6px);
-    left: 50%;
-    margin-left: -15%;
+    left: 36%;
 }
 
 /*-buttons-*/
@@ -67,10 +61,8 @@ div .icon#home {
 .button-start {
     background: url('resourses/buttons/home/start/button-start-inactively.svg');
     position: absolute;
-    width: 410px;
-    height: 100px;
-    left: 50%;
-    margin-left: -23%;
+    width: 100%;
+    height: 25%;
     border-width: 0px;
 }
 
@@ -115,11 +107,6 @@ div .icon#home {
     background: url('resourses/base/game.jpg') center no-repeat fixed;
     top: 0px;
     left: 0px;
-    -khtml-background-size: cover;
-    -moz-background-size: cover;
-    -ms-background-size: cover;
-    -o-background-size: cover;
-    -webkit-background-size: cover;
     background-size: cover;
 }
 
