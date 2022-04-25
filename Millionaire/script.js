@@ -36,18 +36,22 @@ let level = 0;
 let score = 0;
 
 document.querySelector('.button-start').addEventListener('click', function() {
+    document.querySelector('.answers').style.display = "block";
     document.querySelector('.home').style.display = "none";
     document.querySelector('.game').style.display = "block";
 });
 
 document.querySelector('.button-exit').addEventListener('click', function() {
     resetUserValues();
+    document.querySelector('.answers').style.display = "block";
     document.querySelector('.home').style.display = "block";
     document.querySelector('.game').style.display = "none";
+    show(level);
 });
 
 document.querySelector('.button-restart').addEventListener('click', function() {
     resetUserValues();
+    document.querySelector('.answers').style.display = "block";
     show(level);
 });
 
@@ -84,8 +88,8 @@ for (let i = 0; i < answerButtons.length; i++) {
 
 function gameOver() {
     console.log("game over");
-    resetUserValues();
-    show(level);
+    document.querySelector('.answers').style.display = "none";
+    document.getElementById('question-line').textContent = "Ваш счет: " + score.toString();
 }
 
 function setScore(points) {
