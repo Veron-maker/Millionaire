@@ -52,14 +52,14 @@ div .icon#home {
     margin: auto;
     position: absolute;
     left: 50%;
-    margin-left: -20%;
+    margin-left: -15%;
 }
 
 .stroke#home {
     background: linear-gradient(180deg, rgba(185, 76, 237, 0.2) 16.19%, rgba(111, 18, 155, 0.192) 50.47%, rgba(181, 85, 227, 0.192) 86.04%);
     filter: blur(6px);
     left: 50%;
-    margin-left: -20%;
+    margin-left: -15%;
 }
 
 /*-buttons-*/
@@ -70,7 +70,7 @@ div .icon#home {
     width: 410px;
     height: 100px;
     left: 50%;
-    margin-left: -28%;
+    margin-left: -23%;
     border-width: 0px;
 }
 

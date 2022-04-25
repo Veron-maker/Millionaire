@@ -58,6 +58,7 @@
     <Content Include="resourses\buttons\home\start\button-start-actively.svg" />
     <Content Include="resourses\buttons\home\start\button-start-inactively.svg" />
     <Content Include="resourses\game\question.svg" />
+    <Content Include="script.js" />
     <Content Include="server.js" />
     <Content Include="package.json" />
     <Content Include="README.md" />
