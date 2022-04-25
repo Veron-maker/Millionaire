@@ -19,7 +19,7 @@ html, body {
 /*---home-page---*/
 
 .home {
-    display: none;
+    /* display: none; */
     height: 100%;
     position: relative;
     width: 100%;
@@ -108,6 +108,7 @@ div .icon#home {
 /*---game-page---*/
 
 .game {
+    display: none;
     height: 100%;
     position: relative;
     width: 100%;
@@ -180,32 +181,35 @@ table#points-table td {
     padding: 5px;
 }
 
-table#answer-table{
+#answer-table{
     width: 75%;
     height: 80%;
     left: 10%;
     position: relative;
+    /* display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-end; */
 }
 
-    table#answer-table td {
+    #answer-table td {
         width: 45%;
         height: 50%;
         padding-left: 10px;
         padding-right: 10px;
     }
 
-table#text-button{
+table.text-button{
     width: 70%;
     height: 70%;
     left: 15%;
     position: relative;
 }
 
-table#text-button td#idAnswer{
+table.text-button td.idAnswer{
     width: 3%;
 }
 
-    table#text-button td#answer {
+    table.text-button td.answer {
         padding: 0px;
     }
 
@@ -226,7 +230,7 @@ p {
     font-family: 'IBM Plex Serif';
     font-style: italic;
     font-weight: 600;
-    font-size: 35px;
+    font-size: 30px;
     line-height: 40px;
     display: flex;
     align-items: center;
@@ -243,7 +247,7 @@ p {
         -webkit-text-stroke: 1px rgba(111, 18, 155, 0.192);
     }
 
-    p.question {
+    .question-line {
         color: #000000;
         -webkit-text-stroke: 1px rgba(181, 85, 227, 0.192);
         text-align: center;
@@ -268,20 +272,20 @@ span {
     align-items: center;
 }
 
-    span#idAnswer {
+    .idAnswer {
         justify-content: left;
     }
 
-    span#answer1 {
+    #answer1 {
         justify-content: left;
     }
-    span#answer2 {
+    #answer2 {
         justify-content: left;
     }
-    span#answer3 {
+    #answer3 {
         justify-content: left;
     }
-    span#answer4 {
+    #answer4 {
         justify-content: left;
     }
 
@@ -299,18 +303,21 @@ span {
 
     .button-answer:active {
         background: url('resourses/buttons/game/answer/answer-actively.svg');
+        /* background-size: 100% 100%; */
         background-size: cover;
         border-width: 0px;
     }
 
     .button-answer:hover {
         background: url('resourses/buttons/game/answer/answer-actively.svg');
+        /* background-size: 100% 100%; */
         background-size: cover;
         border-width: 0px;
     }
 
     .buttom-answer:disabled {
         background: url('resourses/buttons/game/answer/answer-disabled.svg');
+        /* background-size: 100% 100%; */
         background-size: cover;
         border-width: 0px;
     }
