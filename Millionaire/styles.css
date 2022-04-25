@@ -156,6 +156,7 @@ div .question {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 1% 2%;
 }
 
 div .answers {

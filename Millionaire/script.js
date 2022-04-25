@@ -56,6 +56,7 @@ document.querySelector('.button-restart').addEventListener('click', function() {
 });
 
 function show(level) {
+    document.getElementById('question-points').textContent = "100";
     let answerBox = document.getElementsByClassName('answer');
 
     document.getElementById('question-line').textContent = questions[level];
@@ -94,7 +95,7 @@ function gameOver() {
 
 function setScore(points) {
     score = points;
-    document.getElementById('points').textContent = points;
+    document.getElementById('user-points').textContent = points;
 }
 
 function resetUserValues() {
