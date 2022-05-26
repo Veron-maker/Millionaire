@@ -315,7 +315,15 @@ span {
     }
 
 /*-buttons-*/
-
+.test {
+    background: url('resourses/buttons/game/answer/answer-right.png');
+    background-size: cover;
+    position: relative;
+    width: 100%;
+    height: 75%;
+    border-width: 0px;
+    padding: 5px;
+}
 .button-answer {
     background: url('resourses/buttons/game/answer/answer-inactively.svg');
     background-size: cover;

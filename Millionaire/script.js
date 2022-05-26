@@ -1,4 +1,4 @@
-let questions = ['Что из этого не является косметическим средством?', 
+let questions = ['Что из этого не является косметическим средством?',
 'Кто, в конце концов, скушал Колобка?',
 'Какой шахматной фигуры не существует?',
 'Что означает буква «О» в аббревиатуре ОРТ?',
@@ -71,22 +71,81 @@ show(level);
 let answerButtons = document.getElementsByClassName('button-answer');
 for (let i = 0; i < answerButtons.length; i++) {
     answerButtons[i].addEventListener('click', function() {
-        let answerNum = parseInt(answerButtons[i].id[3]);
-
-        if (answerNum == key[level]) {
-            level++;
-            setScore(score + 100);
-            if (level != 15) {
-                show(level);
-            } else {
-                gameOver();
+        returnRightForm(answerButtons[i], "url('resourses/buttons/game/answer/answer-wait.png') no-repeat");
+        buttonLock(true);
+        let pickedButton = answerButtons[i];
+        let answerNum = parseInt(pickedButton.id[3]);
+        let rightAnswer;
+        let error = false;
+        for (let j = 0; j < answerButtons.length; j++) {
+            if (parseInt(answerButtons[j].id[3]) === key[level]){
+                rightAnswer = answerButtons[j];
+                break;
             }
-        } else {
-            gameOver();
         }
-    });
+
+            if (answerNum === key[level]) {
+                setTimeout(()=> {
+                level++;
+                setScore(score + 100);
+                returnRightForm(pickedButton,"url('resourses/buttons/game/answer/answer-right.png') no-repeat");
+                }
+                    , 2000);
+                setTimeout(()=>{
+                if (level != 15) {
+                    show(level);
+                }
+                else {
+                    gameOver();
+                }},4000);
+            }
+            else {
+                setTimeout(()=> {
+                returnRightForm(pickedButton, "url('resourses/buttons/game/answer/answer-error.png') no-repeat");
+                returnRightForm(rightAnswer,"url('resourses/buttons/game/answer/answer-right.png') no-repeat");
+                error = true;
+                }
+                    ,2000)
+                setTimeout(()=> {
+                    gameOver()
+                },4000)
+            }
+
+            setTimeout(()=>{
+                buttonLock(false);
+                returnOldForm(pickedButton)
+                if (error)
+                    returnOldForm(rightAnswer);
+            }, 4000)
+    })
 }
 
+function returnOldForm(button){
+    button.style.background = "";
+    button.style.backgroundSize = "";
+    button.style.position = "";
+    button.style.width = "";
+    button.style.height =  "";
+    button.style.borderWidth = "";
+    button.style.padding = "";
+}
+
+
+function returnRightForm(button , url){
+    button.style.background = url;
+    button.style.backgroundSize = "cover";
+    button.style.position = "relative";
+    button.style.width = "100%";
+    button.style.height =  "75%";
+    button.style.borderWidth = "0px";
+    button.style.padding = "5px";
+}
+
+function buttonLock(lock){
+    for (let j = 0; j < answerButtons.length; j++) {
+        answerButtons[j].disabled = lock;
+    }
+}
 function gameOver() {
     console.log("game over");
     document.querySelector('.answers').style.display = "none";
