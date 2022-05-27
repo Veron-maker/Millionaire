@@ -69,21 +69,16 @@ function show(level) {
 show(level);
 
 let answerButtons = document.getElementsByClassName('button-answer');
+let rightAnswer;
 for (let i = 0; i < answerButtons.length; i++) {
+    if (parseInt(answerButtons[i].id[3]) === key[level])
+        rightAnswer = answerButtons[i];
     answerButtons[i].addEventListener('click', function() {
         returnRightForm(answerButtons[i], "url('resourses/buttons/game/answer/answer-wait.png') no-repeat");
         buttonLock(true);
         let pickedButton = answerButtons[i];
         let answerNum = parseInt(pickedButton.id[3]);
-        let rightAnswer;
         let error = false;
-        for (let j = 0; j < answerButtons.length; j++) {
-            if (parseInt(answerButtons[j].id[3]) === key[level]){
-                rightAnswer = answerButtons[j];
-                break;
-            }
-        }
-
             if (answerNum === key[level]) {
                 setTimeout(()=> {
                 level++;
