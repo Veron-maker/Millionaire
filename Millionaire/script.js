@@ -69,10 +69,8 @@ function show(level) {
 show(level);
 
 let answerButtons = document.getElementsByClassName('button-answer');
-let rightAnswer;
+let rightAnswer = findAnswer(level);
 for (let i = 0; i < answerButtons.length; i++) {
-    if (parseInt(answerButtons[i].id[3]) === key[level])
-        rightAnswer = answerButtons[i];
     answerButtons[i].addEventListener('click', function() {
         returnRightForm(answerButtons[i], "url('resourses/buttons/game/answer/answer-wait.png') no-repeat");
         buttonLock(true);
@@ -89,6 +87,7 @@ for (let i = 0; i < answerButtons.length; i++) {
                 setTimeout(()=>{
                 if (level != 15) {
                     show(level);
+                    rightAnswer = findAnswer(level)
                 }
                 else {
                     gameOver();
@@ -115,6 +114,13 @@ for (let i = 0; i < answerButtons.length; i++) {
     })
 }
 
+function findAnswer(level){
+    for (let i = 0; i < answerButtons.length; i++) {
+        if (parseInt(answerButtons[i].id[3]) === key[level]) {
+            return answerButtons[i];
+        }
+    }
+}
 function returnOldForm(button){
     button.style.background = "";
     button.style.backgroundSize = "";
