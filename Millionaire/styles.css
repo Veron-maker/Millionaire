@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@500&display=swap');
+
 html, body {
     height: 100%;
     position: relative;
@@ -19,7 +21,7 @@ html, body {
 /*---home-page---*/
 
 .home {
-    /* display: none; */
+    /*display: none;*/
     height: 100%;
     position: relative;
     width: 100%;
@@ -263,12 +265,13 @@ p {
 }
 
     p.unvanish-sum {
-        color: #FFFFFF;
+        color: #FFF768;
         -webkit-text-stroke: 1px rgba(111, 18, 155, 0.192);
+
     }
 
     p.current-sum {
-        color: #FFF768;
+        color: #FFFFFF;
         -webkit-text-stroke: 1px rgba(111, 18, 155, 0.192);
     }
 
@@ -396,3 +399,56 @@ span {
         background-size: cover;
         border-width: 0px;
     }
+
+/*---score-page---*/
+
+.score{
+    display: none;
+    height: 100%;
+    position: relative;
+    width: 100%;
+    background: url('resourses/base/game.jpg') center no-repeat fixed;
+    top: 0px;
+    left: 0px;
+    background-size: cover;
+}
+
+.score-table{
+    color: white;
+    font-size: 210%;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+    border-collapse: collapse;
+}
+
+.score-table td{
+    width: 30%;
+}
+
+.score-table .first-td{
+    text-align: center;
+    font-family: "Oxanium";
+}
+
+.score-table .second-td{
+    text-align: left;
+    font-size: 70%;
+}
+
+.score-table .third-td{
+    text-align: right;
+    font-family: "Oxanium";
+}
+
+.score-table .non-combustible-score{
+    color: #FF9753;
+}
+
+/*.score-table .tr1{
+    background-image: url("resourses/buttons/score/button-sum.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 5px;
+    border-width: 0px;
+    padding: 5px;
+}*/

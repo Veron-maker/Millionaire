@@ -31,10 +31,9 @@ let answers = ['Помада','Татуировка','Крем','Пудра',
 'Рыба','Птица','Змея','Насекомое'];
 
 let key = [3, 4, 4, 2, 4, 3, 4, 2, 1, 3, 3, 4, 1, 3, 3];
-
+var rightAnswer;
 let level = 0;
 let score = 0;
-
 document.querySelector('.button-start').addEventListener('click', function() {
     document.querySelector('.answers').style.display = "block";
     document.querySelector('.home').style.display = "none";
@@ -43,9 +42,9 @@ document.querySelector('.button-start').addEventListener('click', function() {
 
 document.querySelector('.button-exit').addEventListener('click', function() {
     resetUserValues();
-    document.querySelector('.answers').style.display = "block";
-    document.querySelector('.home').style.display = "block";
-    document.querySelector('.game').style.display = "none";
+    document.querySelector('.answers').style.display = "block"; //block
+    document.querySelector('.home').style.display = "block"; //block
+    document.querySelector('.game').style.display = "none"; //none
     show(level);
 });
 
@@ -58,18 +57,35 @@ document.querySelector('.button-restart').addEventListener('click', function() {
 function show(level) {
     document.getElementById('question-points').textContent = "100";
     let answerBox = document.getElementsByClassName('answer');
-
+    if (level > 0) {
+        document.querySelector('.answers').style.display = "block";
+        document.querySelector('.home').style.display = "none";
+        document.querySelector('.game').style.display = "none";
+        document.querySelector('.score').style.display = "block";
+    }
     document.getElementById('question-line').textContent = questions[level];
 
     for (let i = 0; i < answerBox.length; i++) {
         answerBox[i].childNodes[1].textContent = answers[level * 4 + i];
     }
+
+    if (level > 0) {
+        setTimeout(() => {
+            document.querySelector('.answers').style.display = "block";
+            document.querySelector('.home').style.display = "none";
+            document.querySelector('.game').style.display = "block";
+            document.querySelector('.score').style.display = "none";
+        }, 2000);
+    }
+    rightAnswer = findAnswer(level);
 }
+
+
+let answerButtons = document.getElementsByClassName('button-answer');
 
 show(level);
 
-let answerButtons = document.getElementsByClassName('button-answer');
-let rightAnswer = findAnswer(level);
+
 for (let i = 0; i < answerButtons.length; i++) {
     answerButtons[i].addEventListener('click', function() {
         returnRightForm(answerButtons[i], "url('resourses/buttons/game/answer/answer-wait.png') no-repeat");
@@ -78,6 +94,7 @@ for (let i = 0; i < answerButtons.length; i++) {
         let answerNum = parseInt(pickedButton.id[3]);
         let error = false;
             if (answerNum === key[level]) {
+                changeProgress(false, level)
                 setTimeout(()=> {
                 level++;
                 setScore(score + 100);
@@ -85,9 +102,8 @@ for (let i = 0; i < answerButtons.length; i++) {
                 }
                     , 2000);
                 setTimeout(()=>{
-                if (level != 15) {
+                if (level !== 15) {
                     show(level);
-                    rightAnswer = findAnswer(level)
                 }
                 else {
                     gameOver();
@@ -114,6 +130,32 @@ for (let i = 0; i < answerButtons.length; i++) {
     })
 }
 
+
+function changeProgress(restart, level){
+    level++;
+    if (!restart) {
+        let str = '.tr' + level;
+        let tr = document.querySelector(str);
+        tr.style.background = "url('resourses/buttons/score/button-sum.png') no-repeat";
+        tr.style.backgroundSize = "contain";
+        tr.style.backgroundPosition = "5px";
+        tr.style.borderWidth = "0px";
+        tr.style.padding = "5px";
+    }
+    else{
+        for (let i = 1; i < level; i++){
+            let str = '.tr' + i
+            let tr = document.querySelector(str);
+            tr.style.background = "";
+            tr.style.backgroundSize = "";
+            tr.style.backgroundPosition = "";
+            tr.style.borderWidth = "";
+            tr.style.padding = "";
+        }
+    }
+}
+
+
 function findAnswer(level){
     for (let i = 0; i < answerButtons.length; i++) {
         if (parseInt(answerButtons[i].id[3]) === key[level]) {
@@ -121,6 +163,7 @@ function findAnswer(level){
         }
     }
 }
+
 function returnOldForm(button){
     button.style.background = "";
     button.style.backgroundSize = "";
@@ -149,6 +192,7 @@ function buttonLock(lock){
 }
 function gameOver() {
     console.log("game over");
+    changeProgress(true, level)
     document.querySelector('.answers').style.display = "none";
     document.getElementById('question-line').textContent = "Ваш счет: " + score.toString();
 }
@@ -159,6 +203,7 @@ function setScore(points) {
 }
 
 function resetUserValues() {
+    changeProgress(true, level)
     score = 0;
     level = 0;
     setScore(score);
