@@ -235,7 +235,7 @@ table.text-button td.idAnswer{
 }
 
     table.text-button td.answer {
-        padding: 0px;
+        padding: 0;
         width: 80%;
     }
 
@@ -267,7 +267,6 @@ p {
     p.unvanish-sum {
         color: #FFF768;
         -webkit-text-stroke: 1px rgba(111, 18, 155, 0.192);
-
     }
 
     p.current-sum {
@@ -403,7 +402,7 @@ span {
 /*---score-page---*/
 
 .score{
-    display: none;
+    display: block;
     height: 100%;
     position: relative;
     width: 100%;

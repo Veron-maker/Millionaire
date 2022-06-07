@@ -30,10 +30,12 @@ let answers = ['Помада','Татуировка','Крем','Пудра',
 '10','20','70','90', 
 'Рыба','Птица','Змея','Насекомое'];
 
+let saveLevels = [5, 10, 15]
+let levelScore = ['0', '1 000', '3 000', '5 000', '10 000', '20 000', '35 000', '50 000', '70 000', '100 000', '150 000',
+'250 000', '400 000', '600 000', '1 000 000', '2 000 000']
 let key = [3, 4, 4, 2, 4, 3, 4, 2, 1, 3, 3, 4, 1, 3, 3];
 var rightAnswer;
 let level = 0;
-let score = 0;
 document.querySelector('.button-start').addEventListener('click', function() {
     document.querySelector('.answers').style.display = "block";
     document.querySelector('.home').style.display = "none";
@@ -55,7 +57,6 @@ document.querySelector('.button-restart').addEventListener('click', function() {
 });
 
 function show(level) {
-    document.getElementById('question-points').textContent = "100";
     let answerBox = document.getElementsByClassName('answer');
     if (level > 0) {
         document.querySelector('.answers').style.display = "block";
@@ -85,7 +86,6 @@ let answerButtons = document.getElementsByClassName('button-answer');
 
 show(level);
 
-
 for (let i = 0; i < answerButtons.length; i++) {
     answerButtons[i].addEventListener('click', function() {
         returnRightForm(answerButtons[i], "url('resourses/buttons/game/answer/answer-wait.png') no-repeat");
@@ -97,12 +97,16 @@ for (let i = 0; i < answerButtons.length; i++) {
                 changeProgress(false, level)
                 setTimeout(()=> {
                 level++;
-                setScore(score + 100);
                 returnRightForm(pickedButton,"url('resourses/buttons/game/answer/answer-right.png') no-repeat");
                 }
                     , 2000);
                 setTimeout(()=>{
+                    setScore();
                 if (level !== 15) {
+                    if (saveLevels.indexOf(level) !== -1)
+                    {
+                        document.getElementById('question-points').textContent = levelScore[level];
+                    }
                     show(level);
                 }
                 else {
@@ -190,21 +194,40 @@ function buttonLock(lock){
         answerButtons[j].disabled = lock;
     }
 }
+
 function gameOver() {
     console.log("game over");
     changeProgress(true, level)
     document.querySelector('.answers').style.display = "none";
-    document.getElementById('question-line').textContent = "Ваш счет: " + score.toString();
+    let result;
+    if (level >= saveLevels[0] && level !== 15){
+        for (let i = 0; i < saveLevels.length; i++){
+            if (level < saveLevels[i]){
+                result = levelScore[saveLevels[i-1]]
+                break;
+            }
+            if (level === saveLevels[i]){
+                result = levelScore[saveLevels[i]]
+                break;
+            }
+        }
+    }
+    else if (level === 15){
+        result = levelScore[level];
+    }
+    else {
+        result = "0"
+    }
+    document.getElementById('question-line').textContent = "Ваш счет: " + result;
 }
 
-function setScore(points) {
-    score = points;
-    document.getElementById('user-points').textContent = points;
+function setScore() {
+    document.getElementById('user-points').textContent = levelScore[level];
 }
 
 function resetUserValues() {
     changeProgress(true, level)
-    score = 0;
+    document.getElementById('question-points').textContent = 0
     level = 0;
-    setScore(score);
+    setScore();
 }
