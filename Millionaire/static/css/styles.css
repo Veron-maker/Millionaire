@@ -25,7 +25,7 @@ html, body {
     height: 100%;
     position: relative;
     width: 100%;
-    background: url('resourses/base/menu.jpg') center no-repeat fixed;
+    background: url('../resourses/base/menu.jpg') center no-repeat fixed;
     top: 0px;
     left: 0px;
     background-size: cover;
@@ -53,7 +53,7 @@ div .logo#home {
 
 div .icon#home {
     margin: auto;
-    background: url('resourses/base/logo.png');
+    background: url('../resourses/base/logo.png');
     background-size: contain;
     background-repeat: no-repeat;
     position: absolute;
@@ -71,7 +71,7 @@ div .icon#home {
 /*-buttons-*/
 
 .button-start {
-    background: url('resourses/buttons/home/start/button-start-inactively.svg');
+    background: url('../resourses/buttons/home/start/button-start-inactively.svg');
     position: absolute;
     width: 65%;
     height: 25%;
@@ -84,7 +84,7 @@ div .icon#home {
 }
 
     .button-start:active {
-        background: url('resourses/buttons/home/start/button-start-actively.svg');
+        background: url('../resourses/buttons/home/start/button-start-actively.svg');
         border-width: 0px;
         background-size: contain;
         background-repeat: no-repeat;
@@ -93,7 +93,7 @@ div .icon#home {
     }
 
     .button-start:hover {
-        background: url('resourses/buttons/home/start/button-start-actively.svg');
+        background: url('../resourses/buttons/home/start/button-start-actively.svg');
         border-width: 0px;
         background-size: contain;
         background-repeat: no-repeat;
@@ -129,7 +129,7 @@ div .icon#home {
     height: 100%;
     position: relative;
     width: 100%;
-    background: url('resourses/base/game.jpg') center no-repeat fixed;
+    background: url('../resourses/base/game.jpg') center no-repeat fixed;
     top: 0px;
     left: 0px;
     background-size: cover;
@@ -162,7 +162,7 @@ div .question-field {
 }
 
 div .question {
-    background: url('resourses/game/question.svg') center;
+    background: url('../resourses/game/question.svg') center;
     background-size: contain;
     background-repeat: no-repeat;
     width: 60%;
@@ -318,7 +318,7 @@ span {
 
 /*-buttons-*/
 .test {
-    background: url('resourses/buttons/game/answer/answer-right.png');
+    background: url('../resourses/buttons/game/answer/answer-right.png');
     background-size: cover;
     position: relative;
     width: 100%;
@@ -327,7 +327,7 @@ span {
     padding: 5px;
 }
 .button-answer {
-    background: url('resourses/buttons/game/answer/answer-inactively.svg');
+    background: url('../resourses/buttons/game/answer/answer-inactively.svg');
     background-size: cover;
     position: relative;
     width: 100%;
@@ -337,28 +337,28 @@ span {
 }
 
     .button-answer:active {
-        background: url('resourses/buttons/game/answer/answer-actively.svg');
+        background: url('../resourses/buttons/game/answer/answer-actively.svg');
         /* background-size: 100% 100%; */
         background-size: cover;
         border-width: 0px;
     }
 
     .button-answer:hover {
-        background: url('resourses/buttons/game/answer/answer-actively.svg');
+        background: url('../resourses/buttons/game/answer/answer-actively.svg');
         /* background-size: 100% 100%; */
         background-size: cover;
         border-width: 0px;
     }
 
     .buttom-answer:disabled {
-        background: url('resourses/buttons/game/answer/answer-disabled.svg');
+        background: url('../resourses/buttons/game/answer/answer-disabled.svg');
         /* background-size: 100% 100%; */
         background-size: cover;
         border-width: 0px;
     }
 
 .button-exit {
-    background: url('resourses/buttons/game/back/back-inactively.svg');
+    background: url('../resourses/buttons/game/back/back-inactively.svg');
     background-size: cover;
     border-width: 0px;
     position: relative;
@@ -367,19 +367,19 @@ span {
 }
 
     .button-exit:active {
-        background-image: url('resourses/buttons/game/back/back-actively.svg');
+        background-image: url('../resourses/buttons/game/back/back-actively.svg');
         background-size: cover;
         border-width: 0px;
     }
 
     .button-exit:hover {
-        background-image: url('resourses/buttons/game/back/back-actively.svg');
+        background-image: url('../resourses/buttons/game/back/back-actively.svg');
         background-size: cover;
         border-width: 0px;
     }
 
 .button-restart {
-    background: url('resourses/buttons/game/restart/restart-inactively.svg');
+    background: url('../resourses/buttons/game/restart/restart-inactively.svg');
     background-size: cover;
     border-width: 0px;
     position: relative;
@@ -388,13 +388,13 @@ span {
 }
 
     .button-restart:active {
-        background-image: url('resourses/buttons/game/restart/restart-actively.svg');
+        background-image: url('../resourses/buttons/game/restart/restart-actively.svg');
         background-size: cover;
         border-width: 0px;
     }
 
     .button-restart:hover {
-        background-image: url('resourses/buttons/game/restart/restart-actively.svg');
+        background-image: url('../resourses/buttons/game/restart/restart-actively.svg');
         background-size: cover;
         border-width: 0px;
     }
@@ -402,11 +402,11 @@ span {
 /*---score-page---*/
 
 .score{
-    display: block;
+    display: none;
     height: 100%;
     position: relative;
     width: 100%;
-    background: url('resourses/base/game.jpg') center no-repeat fixed;
+    background: url('../resourses/base/game.jpg') center no-repeat fixed;
     top: 0px;
     left: 0px;
     background-size: cover;
@@ -444,7 +444,7 @@ span {
 }
 
 /*.score-table .tr1{
-    background-image: url("resourses/buttons/score/button-sum.png");
+    background-image: url("../resourses/buttons/score/button-sum.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: 5px;

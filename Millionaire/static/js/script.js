@@ -88,7 +88,7 @@ show(level);
 
 for (let i = 0; i < answerButtons.length; i++) {
     answerButtons[i].addEventListener('click', function() {
-        returnRightForm(answerButtons[i], "url('resourses/buttons/game/answer/answer-wait.png') no-repeat");
+        returnRightForm(answerButtons[i], "url('../resourses/buttons/game/answer/answer-wait.png') no-repeat");
         buttonLock(true);
         let pickedButton = answerButtons[i];
         let answerNum = parseInt(pickedButton.id[3]);
@@ -97,7 +97,7 @@ for (let i = 0; i < answerButtons.length; i++) {
                 changeProgress(false, level)
                 setTimeout(()=> {
                 level++;
-                returnRightForm(pickedButton,"url('resourses/buttons/game/answer/answer-right.png') no-repeat");
+                returnRightForm(pickedButton,"url('../resourses/buttons/game/answer/answer-right.png') no-repeat");
                 }
                     , 2000);
                 setTimeout(()=>{
@@ -115,8 +115,8 @@ for (let i = 0; i < answerButtons.length; i++) {
             }
             else {
                 setTimeout(()=> {
-                returnRightForm(pickedButton, "url('resourses/buttons/game/answer/answer-error.png') no-repeat");
-                returnRightForm(rightAnswer,"url('resourses/buttons/game/answer/answer-right.png') no-repeat");
+                returnRightForm(pickedButton, "url('../resourses/buttons/game/answer/answer-error.png') no-repeat");
+                returnRightForm(rightAnswer,"url('../resourses/buttons/game/answer/answer-right.png') no-repeat");
                 error = true;
                 }
                     ,2000)
@@ -140,7 +140,7 @@ function changeProgress(restart, level){
     if (!restart) {
         let str = '.tr' + level;
         let tr = document.querySelector(str);
-        tr.style.background = "url('resourses/buttons/score/button-sum.png') no-repeat";
+        tr.style.background = "url('../resourses/buttons/score/button-sum.png') no-repeat";
         tr.style.backgroundSize = "contain";
         tr.style.backgroundPosition = "5px";
         tr.style.borderWidth = "0px";
@@ -227,7 +227,7 @@ function setScore() {
 
 function resetUserValues() {
     changeProgress(true, level)
-    document.getElementById('question-points').textContent = 0
+    document.getElementById('question-points').textContent = 0;
     level = 0;
     setScore();
 }
