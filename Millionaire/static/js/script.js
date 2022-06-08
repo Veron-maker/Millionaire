@@ -36,19 +36,6 @@ let levelScore = ['0', '1 000', '3 000', '5 000', '10 000', '20 000', '35 000', 
 let key = [3, 4, 4, 2, 4, 3, 4, 2, 1, 3, 3, 4, 1, 3, 3];
 var rightAnswer;
 let level = 0;
-document.querySelector('.button-start').addEventListener('click', function() {
-    document.querySelector('.answers').style.display = "block";
-    document.querySelector('.home').style.display = "none";
-    document.querySelector('.game').style.display = "block";
-});
-
-document.querySelector('.button-exit').addEventListener('click', function() {
-    resetUserValues();
-    document.querySelector('.answers').style.display = "block"; //block
-    document.querySelector('.home').style.display = "block"; //block
-    document.querySelector('.game').style.display = "none"; //none
-    show(level);
-});
 
 document.querySelector('.button-restart').addEventListener('click', function() {
     resetUserValues();
@@ -60,7 +47,6 @@ function show(level) {
     let answerBox = document.getElementsByClassName('answer');
     if (level > 0) {
         document.querySelector('.answers').style.display = "block";
-        document.querySelector('.home').style.display = "none";
         document.querySelector('.game').style.display = "none";
         document.querySelector('.score').style.display = "block";
     }
@@ -73,7 +59,6 @@ function show(level) {
     if (level > 0) {
         setTimeout(() => {
             document.querySelector('.answers').style.display = "block";
-            document.querySelector('.home').style.display = "none";
             document.querySelector('.game').style.display = "block";
             document.querySelector('.score').style.display = "none";
         }, 2000);
