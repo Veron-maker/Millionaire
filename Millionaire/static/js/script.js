@@ -37,11 +37,34 @@ let key = [3, 4, 4, 2, 4, 3, 4, 2, 1, 3, 3, 4, 1, 3, 3];
 var rightAnswer;
 let level = 0;
 
+
+addAnimationHints("hall");
+addAnimationHints("call");
+addAnimationHints("fifty");
+
 document.querySelector('.button-restart').addEventListener('click', function() {
     resetUserValues();
     document.querySelector('.answers').style.display = "block";
     show(level);
 });
+
+
+function addAnimationHints(s) {
+    document.querySelector(`.${s}`).addEventListener('mouseover', function () {
+        this.classList.add(`${s}_hover`);
+    });
+    document.querySelector(`.${s}`).addEventListener('mouseout', function () {
+        this.classList.remove(`${s}_hover`);
+    });
+    document.querySelector(`.${s}`).addEventListener('click', function () {
+        this.classList.add(`${s}_used`);
+        this.addEventListener('mouseover', () => {
+        });
+        this.addEventListener('mouseout', () => {
+        });
+    });
+}
+
 
 function show(level) {
     let answerBox = document.getElementsByClassName('answer');

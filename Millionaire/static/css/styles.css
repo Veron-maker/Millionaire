@@ -7,6 +7,7 @@ html, body {
     margin: 0px;
 }
 
+
 /*---BASE---*/
 
 .stroke {
@@ -188,8 +189,16 @@ div .answers {
 div .menu-game{
     width: 50%;
     height: 10%;
-    top: 10%;
+    top: 6%;
     position: relative;
+}
+
+div .hints{
+    display: flex;
+    float: right;
+    position: absolute;
+    bottom: 0;
+    left: 70%;
 }
 
 /*-tables-*/
@@ -241,11 +250,16 @@ ul {
     position: relative;
 }
 
+
 ul#menu-table li {
     margin-left: 20px;
     display: inline;
 }
 
+ul#hints-table li {
+    display: inline;
+    margin-left: 20px;
+}
 
 /*-texts-*/
 p {
@@ -394,6 +408,65 @@ span {
         background-size: cover;
         border-width: 0px;
     }
+
+.fifty{
+    background: url('../resourses/buttons/game/hints/fifty/fifty-inactively.svg');
+    background-size: cover;
+    border-width: 0px;
+    position: relative;
+    width: 100px;
+    height: 100px;
+}
+
+
+    .fifty_hover {
+        background-image: url('../resourses/buttons/game/hints/fifty/fify-actively.svg');
+        background-size: cover;
+        border-width: 0px;
+    }
+
+    .fifty_used{
+        background-image: url('../resourses/buttons/game/hints/fifty/fifty-used.svg');
+    }
+
+.call{
+    background: url('../resourses/buttons/game/hints/call/call-inactively.svg');
+    background-size: cover;
+    border-width: 0px;
+    position: relative;
+    width: 100px;
+    height: 100px;
+}
+
+    .call_hover {
+        background-image: url('../resourses/buttons/game/hints/call/call-actively.svg');
+        background-size: cover;
+        border-width: 0px;
+    }
+
+    .call_used{
+         background-image: url('../resourses/buttons/game/hints/call/call-used.svg');
+     }
+
+.hall{
+    background: url('../resourses/buttons/game/hints/hall/hall-inactively.svg');
+    background-size: cover;
+    border-width: 0px;
+    position: relative;
+    width: 100px;
+    height: 100px;
+}
+
+    .hall_hover {
+        background-image: url('../resourses/buttons/game/hints/hall/hall-actively.svg');
+        background-size: cover;
+        border-width: 0px;
+    }
+
+    .hall_used{
+        background-image: url('../resourses/buttons/game/hints/hall/hall-used.svg');
+    }
+
 
 /*---score-page---*/
 
