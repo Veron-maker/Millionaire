@@ -134,6 +134,7 @@ function deleteTwoIncorrectAnswer(){
         let number = Math.floor(Math.random() * 4) + 1;
         if (number !== rightNumber && lastNumber !== number){
             document.getElementById(`answer${number}`).textContent = "";
+            document.getElementById(`answer${number}`).parentNode.parentNode.parentNode.parentNode.parentNode.disabled = true;
             counter++;
             lastNumber = number;
         }
