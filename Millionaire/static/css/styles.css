@@ -187,18 +187,11 @@ div .answers {
 }
 
 div .menu-game{
-    width: 50%;
+    display: inline-flex;
+    width: 95%;
     height: 10%;
-    top: 6%;
+    top: 8%;
     position: relative;
-}
-
-div .hints{
-    display: flex;
-    float: right;
-    position: absolute;
-    bottom: 0;
-    left: 70%;
 }
 
 /*-tables-*/
@@ -253,12 +246,18 @@ ul {
 
 ul#menu-table li {
     margin-left: 20px;
-    display: inline;
+    display: inline-flex;
 }
 
-ul#hints-table li {
-    display: inline;
+.hints-table {
+    display: inline-flex;
+    justify-content: flex-end;
     margin-left: 20px;
+}
+
+.hints-table li{
+    display: flex;
+    margin-right: 20px;
 }
 
 /*-texts-*/
@@ -370,7 +369,7 @@ span {
 .button-exit {
     background: url('../resourses/buttons/game/back/back-inactively.svg');
     background-size: cover;
-    border-width: 0px;
+    border-width: 0;
     position: relative;
     width: 100px;
     height: 100px;
@@ -379,19 +378,19 @@ span {
     .button-exit:active {
         background-image: url('../resourses/buttons/game/back/back-actively.svg');
         background-size: cover;
-        border-width: 0px;
+        border-width: 0;
     }
 
     .button-exit:hover {
         background-image: url('../resourses/buttons/game/back/back-actively.svg');
         background-size: cover;
-        border-width: 0px;
+        border-width: 0;
     }
 
 .button-restart {
     background: url('../resourses/buttons/game/restart/restart-inactively.svg');
     background-size: cover;
-    border-width: 0px;
+    border-width: 0;
     position: relative;
     width: 100px;
     height: 100px;
@@ -400,19 +399,19 @@ span {
     .button-restart:active {
         background-image: url('../resourses/buttons/game/restart/restart-actively.svg');
         background-size: cover;
-        border-width: 0px;
+        border-width: 0;
     }
 
     .button-restart:hover {
         background-image: url('../resourses/buttons/game/restart/restart-actively.svg');
         background-size: cover;
-        border-width: 0px;
+        border-width: 0;
     }
 
 .fifty{
     background: url('../resourses/buttons/game/hints/fifty/fifty-inactively.svg');
     background-size: cover;
-    border-width: 0px;
+    border-width: 0;
     position: relative;
     width: 100px;
     height: 100px;
@@ -422,7 +421,7 @@ span {
     .fifty_hover {
         background-image: url('../resourses/buttons/game/hints/fifty/fify-actively.svg');
         background-size: cover;
-        border-width: 0px;
+        border-width: 0;
     }
 
     .fifty_used{
@@ -432,7 +431,7 @@ span {
 .call{
     background: url('../resourses/buttons/game/hints/call/call-inactively.svg');
     background-size: cover;
-    border-width: 0px;
+    border-width: 0;
     position: relative;
     width: 100px;
     height: 100px;
@@ -451,7 +450,7 @@ span {
 .hall{
     background: url('../resourses/buttons/game/hints/hall/hall-inactively.svg');
     background-size: cover;
-    border-width: 0px;
+    border-width: 0;
     position: relative;
     width: 100px;
     height: 100px;
@@ -460,7 +459,7 @@ span {
     .hall_hover {
         background-image: url('../resourses/buttons/game/hints/hall/hall-actively.svg');
         background-size: cover;
-        border-width: 0px;
+        border-width: 0;
     }
 
     .hall_used{

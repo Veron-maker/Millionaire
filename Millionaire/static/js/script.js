@@ -38,32 +38,13 @@ var rightAnswer;
 let level = 0;
 
 
-addAnimationHints("hall");
-addAnimationHints("call");
-addAnimationHints("fifty");
+
 
 document.querySelector('.button-restart').addEventListener('click', function() {
     resetUserValues();
     document.querySelector('.answers').style.display = "block";
     show(level);
 });
-
-
-function addAnimationHints(s) {
-    document.querySelector(`.${s}`).addEventListener('mouseover', function () {
-        this.classList.add(`${s}_hover`);
-    });
-    document.querySelector(`.${s}`).addEventListener('mouseout', function () {
-        this.classList.remove(`${s}_hover`);
-    });
-    document.querySelector(`.${s}`).addEventListener('click', function () {
-        this.classList.add(`${s}_used`);
-        this.addEventListener('mouseover', () => {
-        });
-        this.addEventListener('mouseout', () => {
-        });
-    });
-}
 
 
 function show(level) {
@@ -93,6 +74,7 @@ function show(level) {
 let answerButtons = document.getElementsByClassName('button-answer');
 
 show(level);
+reloadHints(false);
 
 for (let i = 0; i < answerButtons.length; i++) {
     answerButtons[i].addEventListener('click', function() {
@@ -142,6 +124,56 @@ for (let i = 0; i < answerButtons.length; i++) {
     })
 }
 
+
+function deleteTwoIncorrectAnswer(){
+    console.log(1)
+    let rightNumber = parseInt(rightAnswer.id[3]);
+    let lastNumber = -1;
+    let counter = 0;
+    while (true) {
+        let number = Math.floor(Math.random() * 4) + 1;
+        if (number !== rightNumber && lastNumber !== number){
+            document.getElementById(`answer${number}`).textContent = "";
+            counter++;
+            lastNumber = number;
+        }
+        if (counter === 2){
+            break;
+        }
+    }
+}
+
+
+function addAnimationHints(s, func, reload) {
+    let button = document.querySelector(`.${s}`);
+    button.disabled = false;
+    button.classList.remove(`${s}_used`);
+    button.classList.remove(`${s}_hover`);
+    button.addEventListener('mouseover', function () {
+        this.classList.add(`${s}_hover`);
+    });
+    button.addEventListener('mouseout', function () {
+        this.classList.remove(`${s}_hover`);
+    });
+    if (!reload) {
+        button.addEventListener('click', function () {
+            this.classList.add(`${s}_used`);
+            func();
+            this.addEventListener('mouseover', () => {
+            });
+            this.addEventListener('mouseout', () => {
+            });
+            this.disabled = true;
+        });
+    }
+}
+
+
+function reloadHints(reload) {
+    addAnimationHints("hall", () => {console.log(3)}, reload);
+    addAnimationHints("call", ()=>{console.log(2)}, reload);
+    addAnimationHints("fifty", deleteTwoIncorrectAnswer, reload);
+}
 
 function changeProgress(restart, level){
     level++;
@@ -237,5 +269,6 @@ function resetUserValues() {
     changeProgress(true, level)
     document.getElementById('question-points').textContent = 0;
     level = 0;
+    reloadHints(true);
     setScore();
 }
