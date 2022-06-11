@@ -37,7 +37,8 @@ let key = [3, 4, 4, 2, 4, 3, 4, 2, 1, 3, 3, 4, 1, 3, 3];
 var rightAnswer;
 let level = 0;
 
-
+var kickedAnswer = [];
+var useFifty = false;
 
 
 document.querySelector('.button-restart').addEventListener('click', function() {
@@ -45,9 +46,14 @@ document.querySelector('.button-restart').addEventListener('click', function() {
     document.querySelector('.answers').style.display = "block";
     show(level);
 });
+document.querySelector('.but-skip').addEventListener('click', function (){
+    document.querySelector('.call_screen').style.display = "none";
+    document.querySelector('.game').style.display = "block";
+})
 
 
 function show(level) {
+    useFifty = false;
     let answerBox = document.getElementsByClassName('answer');
     if (level > 0) {
         document.querySelector('.answers').style.display = "block";
@@ -124,9 +130,44 @@ for (let i = 0; i < answerButtons.length; i++) {
     })
 }
 
+function callToFriend(){
+    document.querySelector('.game').style.display = "none";
+    document.querySelector('.call_screen').style.display = "block";
+    let timeout = 500;
+    let text = document.querySelector(".call_text");
+    let obj = {1 : "A", 2 :"B", 3 : "C", 4: "D"};
+    if (useFifty){
+        delete obj[kickedAnswer[0]];
+        delete obj[kickedAnswer[1]];
+    }
+    text.innerHTML = `-Привет! Помоги мне ответить на вопрос. ${questions[level]} <br>`;
+    for (let i = 0; i < 5; i++) {
+        if (obj[i] !== undefined) {
+            if (i !== 2 && i !== 3) {
+                setTimeout(() => {
+                    text.innerHTML += `${obj[i]}. ${answers[level * 4 - 1 + i]} <br>`
+                }, timeout);
+            } else if (i === 2) {
+                setTimeout(() => {
+                    text.innerHTML += `${obj[i]}. ${answers[level * 4 + i]} <br>`
+                }, timeout);
+            } else {
+                setTimeout(() => {
+                    text.innerHTML += `${obj[i]}. ${answers[level * 4 + i - 2]} <br>`
+                }, timeout);
+            }
+            timeout += 500;
+        }
+    }
+    timeout+=500;
+    setTimeout( () => {text.innerHTML += `-Xмммм.`}, timeout);
+    timeout+= 1000;
+    setTimeout( () => {text.innerHTML += `Мне кажется ответ ${obj[parseInt(rightAnswer.id[3])]}`}, timeout);
+}
+
 
 function deleteTwoIncorrectAnswer(){
-    console.log(1)
+    useFifty = true;
     let rightNumber = parseInt(rightAnswer.id[3]);
     let lastNumber = -1;
     let counter = 0;
@@ -137,6 +178,7 @@ function deleteTwoIncorrectAnswer(){
             document.getElementById(`answer${number}`).parentNode.parentNode.parentNode.parentNode.parentNode.disabled = true;
             counter++;
             lastNumber = number;
+            kickedAnswer.push(number);
         }
         if (counter === 2){
             break;
@@ -172,7 +214,7 @@ function addAnimationHints(s, func, reload) {
 
 function reloadHints(reload) {
     addAnimationHints("hall", () => {console.log(3)}, reload);
-    addAnimationHints("call", ()=>{console.log(2)}, reload);
+    addAnimationHints("call", callToFriend, reload);
     addAnimationHints("fifty", deleteTwoIncorrectAnswer, reload);
 }
 
