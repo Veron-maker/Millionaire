@@ -118,6 +118,96 @@ div .icon#home {
     opacity: 0.7;
 }
 */
+/*---hall-page---*/
+.hall_screen {
+    display: none;
+    height: 100%;
+    width: 100%;
+    background: url('../resourses/base/game.jpg') center no-repeat fixed;
+    background-size: cover;
+    align-items: center;
+}
+
+.hall_content {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    height: 85%;
+    width: 100%;
+}
+
+.diagram {
+    display: inline-flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    width: 30%;
+    height: 60%;
+    background: rgba(255, 255,255, 0.7);
+    border-radius: 10px;
+    font-family: Arial;
+    font-style: italic;
+    font-weight: 600;
+    font-size: unset;
+    padding: 1% 1% 1% 1%;
+    line-height: 100%;
+    border: 2px black solid;
+}
+
+.bar {
+    border: 2px black solid;
+    display: flex;
+    position: relative;
+    background: #903fa8;
+    height: 0%;
+    width: 15%;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+
+
+.hall_text {
+    width: 30%;
+    height: 5%;
+    background: rgba(255, 255,255, 0.7);
+    border-radius: 10px;
+    font-family: Arial;
+    font-style: italic;
+    font-weight: 600;
+    font-size: unset;
+    padding: 1% 1% 1% 1%;
+    line-height: 100%;
+    text-align: center;
+}
+
+.button-skip2 {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 10%;
+}
+
+
+.but-skip2 {
+    background: url('../resourses/game/call/continue-inactively.svg');
+    background-size: cover;
+    border-width: 0;
+    position: relative;
+    width: 100px;
+    height: 100px;
+}
+
+.but-skip2:active {
+    background-image: url('../resourses/game/call/continue-actively.svg');
+    background-size: cover;
+    border-width: 0;
+}
+
+.but-skip2:hover {
+    background-image: url('../resourses/game/call/continue-actively.svg');
+    background-size: cover;
+    border-width: 0;
+}
 /*---call-page---*/
 
 .call_screen {

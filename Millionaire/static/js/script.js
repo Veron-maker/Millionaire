@@ -49,6 +49,15 @@ document.querySelector('.button-restart').addEventListener('click', function() {
 document.querySelector('.but-skip').addEventListener('click', function (){
     document.querySelector('.call_screen').style.display = "none";
     document.querySelector('.game').style.display = "block";
+});
+document.querySelector('.but-skip2').addEventListener('click', function (){
+    document.querySelector('.hall_screen').style.display = "none";
+    document.querySelector('.game').style.display = "block";
+    document.querySelector(".hall_text").textContent = "Ожидаем пока все проголосуют...";
+    document.getElementById("barA").style.height = `0%`;
+    document.getElementById("barB").style.height = `0%`;
+    document.getElementById("barC").style.height = `0%`;
+    document.getElementById("barD").style.height = `0%`;
 })
 
 
@@ -128,6 +137,60 @@ for (let i = 0; i < answerButtons.length; i++) {
                     returnOldForm(rightAnswer);
             }, 4000)
     })
+}
+
+
+function hallHelp(){
+    let obj = FindAnswer();
+    document.querySelector('.game').style.display = "none";
+    document.querySelector('.hall_screen').style.display = "block";
+    let text = document.querySelector(".hall_text");
+    setTimeout(()=> {
+        text.textContent = "Были получены такие результаты.";
+        console.log(obj)
+        document.getElementById("barA").style.height = `${obj["A"]}%`;
+        document.getElementById("barB").style.height = `${obj["B"]}%`;
+        document.getElementById("barC").style.height = `${obj["C"]}%`;
+        document.getElementById("barD").style.height = `${obj["D"]}%`;
+    },1500);
+}
+
+function FindAnswer(){
+    let obj = {1 : "A", 2 :"B", 3 : "C", 4: "D"};
+    if (useFifty){
+        delete obj[kickedAnswer[0]];
+        delete obj[kickedAnswer[1]];
+    }
+    let countingObj = {};
+    for (let i = 1; i < 5; i++){
+        if (obj[i] !== undefined){
+            countingObj[obj[i]] = 0;
+        }
+    }
+    if (level <= 5){
+        CountingVotes(obj, countingObj, 3)
+    }
+    else if (level > 5 && level <= 10){
+        CountingVotes(obj, countingObj, 2)
+    }
+    else {
+        CountingVotes(obj, countingObj, 1)
+    }
+
+    return countingObj;
+}
+
+function CountingVotes(obj, newObj, chance){
+    let rightNumber = parseInt(rightAnswer.id[3]);
+    for (let i = 0; i <= 100; i += 1){
+        let vote = Math.floor(Math.random() * (4 * chance) + 1);
+        if (vote > 4){
+            newObj[obj[rightNumber]] += 1;
+        }
+        else {
+            newObj[obj[vote]] += 3;
+        }
+    }
 }
 
 function callToFriend(){
@@ -213,7 +276,7 @@ function addAnimationHints(s, func, reload) {
 
 
 function reloadHints(reload) {
-    addAnimationHints("hall", () => {console.log(3)}, reload);
+    addAnimationHints("hall", hallHelp, reload);
     addAnimationHints("call", callToFriend, reload);
     addAnimationHints("fifty", deleteTwoIncorrectAnswer, reload);
 }
