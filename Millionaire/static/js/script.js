@@ -1,45 +1,18 @@
-let questions = ['Что из этого не является косметическим средством?',
-'Кто, в конце концов, скушал Колобка?',
-'Какой шахматной фигуры не существует?',
-'Что означает буква «О» в аббревиатуре ОРТ?',
-'Главный герой в романе Ф. И. Достоевского «Преступление и наказание»',
-'В состав любого органического вещества входит…',
-'Какое слово здесь лишнее?',
-'Как назывался самый младший гражданский чин, присваивавшийся согласно Табели о рангах?',
-'Кто изобрел громоотвод?',
-'Как в России в 15-17вв. назывались феодально-зависимые люди, не имевшие своего хозяйства, жившие и работавшие во дворах крестьян или посадских людей?',
-'В каком городе находится штаб-квартира Microsoft?',
-'При каком правителе к России была присоединена территория Финляндии?',
-'Ричард Львиное Сердце был пленен во время',
-'Известно, что в кириллице многие буквы имели и цифровое значение. Чему равна буква К (како)?',
-'Кто такой «молотоглав»?'];
+async function getData(url) {
+    const response = await fetch(url);
+    return response.json();
+}
 
-let answers = ['Помада','Татуировка','Крем','Пудра',  
-'Дед','Баба','Заяц','Лиса', 
-'Пешка','Конь','Король','Дама', 
-'Олигархическое','Объективное','Общественное','Однообразное', 
-'Расторгуев','Чикатило','Тумбочкин','Раскольников', 
-'кислород','углерод','водород','азот', 
-'Автор','Товар ','Отвар','Ворот', 
-'Синодский регистратор','Провинциальный секретарь','Коллежский регистратор','Кабинетский регистратор', 
-'Франклин','Рузвельт','Вашингтон','Линкольн', 
-'Дворовые','Захребетники','Нахлебники','Бестягольные', 
-'Нью-Йорк','Ричмонд','Новый Орлеан','Сиэтл', 
-'Петр I','Екатерина II','Павел I','Александр I', 
-'крестового похода','столетней войны','войны алой и белой розы','войны за независимость', 
-'10','20','70','90', 
-'Рыба','Птица','Змея','Насекомое'];
+const allQuestionsData = await getData("../resourses/questions/questions.json");
 
 let saveLevels = [5, 10, 15]
 let levelScore = ['0', '1 000', '3 000', '5 000', '10 000', '20 000', '35 000', '50 000', '70 000', '100 000', '150 000',
 '250 000', '400 000', '600 000', '1 000 000', '2 000 000']
-let key = [3, 4, 4, 2, 4, 3, 4, 2, 1, 3, 3, 4, 1, 3, 3];
 var rightAnswer;
 let level = 0;
-
+var currentQuestion;
 var kickedAnswer = [];
 var useFifty = false;
-
 
 document.querySelector('.button-restart').addEventListener('click', function() {
     resetUserValues();
@@ -60,6 +33,23 @@ document.querySelector('.but-skip2').addEventListener('click', function (){
     document.getElementById("barD").style.height = `0%`;
 })
 
+function getCategoryQuestion(array) {
+    const rand = Math.floor(Math.random() * 4);
+    const randomElement = array[rand];
+    array.splice(rand, 1);
+    return randomElement;
+}
+
+let curAns = ""
+function getNewQuestion(level){
+    if (level < 5){
+        return getCategoryQuestion(allQuestionsData["Easy"])
+    } else if (level < 10) {
+        return getCategoryQuestion(allQuestionsData["Medium"])
+    } else {
+        return getCategoryQuestion(allQuestionsData["Hard"])
+    }
+}
 
 function show(level) {
     useFifty = false;
@@ -69,11 +59,14 @@ function show(level) {
         document.querySelector('.game').style.display = "none";
         document.querySelector('.score').style.display = "block";
     }
-    document.getElementById('question-line').textContent = questions[level];
+    currentQuestion = getNewQuestion(level);
+    document.getElementById('question-line').textContent = currentQuestion["question"];
+    curAns = currentQuestion["answer"]
 
-    for (let i = 0; i < answerBox.length; i++) {
-        answerBox[i].childNodes[1].textContent = answers[level * 4 + i];
-    }
+    answerBox[0].childNodes[1].textContent = currentQuestion["variants"][0];
+    answerBox[1].childNodes[1].textContent = currentQuestion["variants"][2];
+    answerBox[2].childNodes[1].textContent = currentQuestion["variants"][1];
+    answerBox[3].childNodes[1].textContent = currentQuestion["variants"][3];
 
     if (level > 0) {
         setTimeout(() => {
@@ -98,7 +91,7 @@ for (let i = 0; i < answerButtons.length; i++) {
         let pickedButton = answerButtons[i];
         let answerNum = parseInt(pickedButton.id[3]);
         let error = false;
-            if (answerNum === key[level]) {
+            if (answerNum === curAns) {
                 changeProgress(false, level)
                 setTimeout(()=> {
                 level++;
@@ -203,20 +196,20 @@ function callToFriend(){
         delete obj[kickedAnswer[0]];
         delete obj[kickedAnswer[1]];
     }
-    text.innerHTML = `-Привет! Помоги мне ответить на вопрос. ${questions[level]} <br>`;
+    text.innerHTML = `-Привет! Помоги мне ответить на вопрос. ${currentQuestion["question"]} <br>`;
     for (let i = 0; i < 5; i++) {
         if (obj[i] !== undefined) {
             if (i !== 2 && i !== 3) {
                 setTimeout(() => {
-                    text.innerHTML += `${obj[i]}. ${answers[level * 4 - 1 + i]} <br>`
+                    text.innerHTML += `${obj[i]}. ${currentQuestion["variants"][i-1]} <br>`
                 }, timeout);
             } else if (i === 2) {
                 setTimeout(() => {
-                    text.innerHTML += `${obj[i]}. ${answers[level * 4 + i]} <br>`
+                    text.innerHTML += `${obj[i]}. ${currentQuestion["variants"][1]} <br>`
                 }, timeout);
             } else {
                 setTimeout(() => {
-                    text.innerHTML += `${obj[i]}. ${answers[level * 4 + i - 2]} <br>`
+                    text.innerHTML += `${obj[i]}. ${currentQuestion["variants"][2]} <br>`
                 }, timeout);
             }
             timeout += 500;
@@ -308,7 +301,7 @@ function changeProgress(restart, level){
 
 function findAnswer(level){
     for (let i = 0; i < answerButtons.length; i++) {
-        if (parseInt(answerButtons[i].id[3]) === key[level]) {
+        if (parseInt(answerButtons[i].id[3]) === curAns) {
             return answerButtons[i];
         }
     }

@@ -4,12 +4,29 @@ var express = require('express');
 
 var app = express();
 
-var staticPath = path.join(__dirname, '/');
+var staticPath = path.join(__dirname, '/').slice(0, 56);
+console.log(staticPath)
 app.use(express.static(staticPath));
 
-// Allows you to set port in the project properties.
 app.set('port', process.env.PORT || 3000);
 
-var server = app.listen(app.get('port'), function () {
+app.get('/game.html', function (req, res) {
+    res.redirect('/game')
+});
+
+app.get('/index.html', function (req, res) {
+    res.redirect('/');
+});
+
+app.get('/', function (req, res) {
+    res.sendFile(staticPath + 'html/index.html');
+});
+
+app.get('/game', function (req, res){
+    res.sendFile(staticPath + 'html/game.html');
+})
+
+
+app.listen(app.get('port'), function () {
     console.log('listening');
 });
