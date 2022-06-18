@@ -4,8 +4,7 @@ var express = require('express');
 
 var app = express();
 
-var staticPath = path.join(__dirname, '/').slice(0, 56);
-console.log(staticPath)
+var staticPath = path.join(__dirname, '/').slice(0, -3);
 app.use(express.static(staticPath));
 
 app.set('port', process.env.PORT || 3000);
