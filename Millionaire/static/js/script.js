@@ -6,14 +6,15 @@ async function getData(url) {
 const questionsJson = await getData("../resourses/questions/questions.json");
 let allQuestionsData = structuredClone(questionsJson);
 
-let saveLevels = [5, 10, 15]
+let saveLevels = [5, 10, 15];
 let levelScore = ['0', '1 000', '3 000', '5 000', '10 000', '20 000', '35 000', '50 000', '70 000', '100 000', '150 000',
-'250 000', '400 000', '600 000', '1 000 000', '2 000 000']
-var rightAnswer;
+    '250 000', '400 000', '600 000', '1 000 000', '2 000 000'];
+let rightAnswer;
 let level = 0;
-var currentQuestion;
-var kickedAnswer = [];
-var useFifty = false;
+let currentQuestion;
+let kickedAnswer = [];
+let useFifty = false;
+let curAns = "";
 
 document.querySelector('.button-restart').addEventListener('click', function() {
     resetUserValues();
@@ -41,14 +42,13 @@ function getCategoryQuestion(array) {
     return randomElement;
 }
 
-let curAns = ""
 function getNewQuestion(level){
     if (level < 5){
-        return getCategoryQuestion(allQuestionsData["Easy"])
+        return getCategoryQuestion(allQuestionsData["Easy"]);
     } else if (level < 10) {
-        return getCategoryQuestion(allQuestionsData["Medium"])
+        return getCategoryQuestion(allQuestionsData["Medium"]);
     } else {
-        return getCategoryQuestion(allQuestionsData["Hard"])
+        return getCategoryQuestion(allQuestionsData["Hard"]);
     }
 }
 
@@ -62,7 +62,7 @@ function show(level) {
     }
     currentQuestion = getNewQuestion(level);
     document.getElementById('question-line').textContent = currentQuestion["question"];
-    curAns = currentQuestion["answer"]
+    curAns = currentQuestion["answer"];
 
     answerBox[0].childNodes[1].textContent = currentQuestion["variants"][0];
     answerBox[1].childNodes[1].textContent = currentQuestion["variants"][2];
@@ -79,57 +79,56 @@ function show(level) {
     rightAnswer = findAnswer(level);
 }
 
-
 let answerButtons = document.getElementsByClassName('button-answer');
 
 show(level);
 reloadHints(false);
 
 for (let i = 0; i < answerButtons.length; i++) {
-    answerButtons[i].addEventListener('click', function() {
+    answerButtons[i].addEventListener('click', function () {
         returnRightForm(answerButtons[i], "url('../resourses/buttons/game/answer/answer-wait.png') no-repeat");
         buttonLock(true);
         let pickedButton = answerButtons[i];
         let answerNum = parseInt(pickedButton.id[3]);
         let error = false;
-            if (answerNum === curAns) {
-                changeProgress(false, level)
-                setTimeout(()=> {
+
+        if (answerNum === curAns) {
+            changeProgress(false, level);
+            setTimeout(() => {
                 level++;
-                returnRightForm(pickedButton,"url('../resourses/buttons/game/answer/answer-right.png') no-repeat");
-                }
-                    , 1000);
-                setTimeout(()=>{
-                    setScore();
+                returnRightForm(pickedButton, "url('../resourses/buttons/game/answer/answer-right.png') no-repeat");
+            }, 1000);
+            setTimeout(() => {
+                setScore();
                 if (level !== 15) {
-                    if (saveLevels.indexOf(level) !== -1)
-                    {
+                    if (saveLevels.indexOf(level) !== -1) {
                         document.getElementById('question-points').textContent = levelScore[level];
                     }
                     show(level);
                 }
                 else {
                     gameOver();
-                }}, 2000);
-            }
-            else {
-                setTimeout(()=> {
+                }
+            }, 2000);
+        }
+        else {
+            setTimeout(() => {
                 returnRightForm(pickedButton, "url('../resourses/buttons/game/answer/answer-error.png') no-repeat");
-                returnRightForm(rightAnswer,"url('../resourses/buttons/game/answer/answer-right.png') no-repeat");
+                returnRightForm(rightAnswer, "url('../resourses/buttons/game/answer/answer-right.png') no-repeat");
                 error = true;
-                }, 1000)
-                setTimeout(()=> {
-                    gameOver()
-                }, 2000)
-            }
+            }, 1000);
+            setTimeout(() => {
+                gameOver()
+            }, 2000);
+        }
 
-            setTimeout(()=>{
-                buttonLock(false);
-                returnOldForm(pickedButton)
-                if (error)
-                    returnOldForm(rightAnswer);
-            }, 2000)
-    })
+        setTimeout(() => {
+            buttonLock(false);
+            returnOldForm(pickedButton);
+            if (error)
+                returnOldForm(rightAnswer);
+        }, 2000);
+    });
 }
 
 
@@ -138,14 +137,14 @@ function hallHelp(){
     document.querySelector('.game').style.display = "none";
     document.querySelector('.hall_screen').style.display = "block";
     let text = document.querySelector(".hall_text");
-    setTimeout(()=> {
+    setTimeout(() => {
         text.textContent = "Были получены такие результаты.";
-        console.log(obj)
+        console.log(obj);
         document.getElementById("barA").style.height = `${obj["A"]}%`;
         document.getElementById("barB").style.height = `${obj["B"]}%`;
         document.getElementById("barC").style.height = `${obj["C"]}%`;
         document.getElementById("barD").style.height = `${obj["D"]}%`;
-    },750);
+    }, 750);
 }
 
 function FindAnswer(){
@@ -161,13 +160,13 @@ function FindAnswer(){
         }
     }
     if (level <= 5){
-        CountingVotes(obj, countingObj, 3)
+        CountingVotes(obj, countingObj, 3);
     }
     else if (level > 5 && level <= 10){
-        CountingVotes(obj, countingObj, 2)
+        CountingVotes(obj, countingObj, 2);
     }
     else {
-        CountingVotes(obj, countingObj, 1)
+        CountingVotes(obj, countingObj, 1);
     }
 
     return countingObj;
@@ -201,24 +200,32 @@ function callToFriend(){
         if (obj[i] !== undefined) {
             if (i !== 2 && i !== 3) {
                 setTimeout(() => {
-                    text.innerHTML += `${obj[i]}. ${currentQuestion["variants"][i-1]} <br>`
+                    text.innerHTML += `${obj[i]}. ${currentQuestion["variants"][i - 1]} <br>`;
                 }, timeout);
             } else if (i === 2) {
                 setTimeout(() => {
-                    text.innerHTML += `${obj[i]}. ${currentQuestion["variants"][1]} <br>`
+                    text.innerHTML += `${obj[i]}. ${currentQuestion["variants"][1]} <br>`;
                 }, timeout);
             } else {
                 setTimeout(() => {
-                    text.innerHTML += `${obj[i]}. ${currentQuestion["variants"][2]} <br>`
+                    text.innerHTML += `${obj[i]}. ${currentQuestion["variants"][2]} <br>`;
                 }, timeout);
             }
             timeout += 250;
         }
     }
-    timeout+=250;
-    setTimeout( () => {text.innerHTML += `-Xмммм.`}, timeout);
-    timeout+= 500;
-    setTimeout( () => {text.innerHTML += `Мне кажется ответ ${obj[parseInt(rightAnswer.id[3])]}`}, timeout);
+    timeout += 250;
+
+    setTimeout(() => {
+        text.innerHTML += `-Xмммм.`;
+    }, timeout);
+
+    timeout += 500;
+
+    //if 
+    setTimeout(() => {
+        text.innerHTML += `Мне кажется ответ ${obj[parseInt(rightAnswer.id[3])]}`;
+    }, timeout);
 }
 
 
@@ -312,7 +319,7 @@ function returnOldForm(button){
     button.style.backgroundSize = "";
     button.style.position = "";
     button.style.width = "";
-    button.style.height =  "";
+    button.style.height = "";
     button.style.borderWidth = "";
     button.style.padding = "";
 }
@@ -323,7 +330,7 @@ function returnRightForm(button , url){
     button.style.backgroundSize = "cover";
     button.style.position = "relative";
     button.style.width = "100%";
-    button.style.height =  "75%";
+    button.style.height = "75%";
     button.style.borderWidth = "0px";
     button.style.padding = "5px";
 }
@@ -336,26 +343,24 @@ function buttonLock(lock){
 
 function gameOver() {
     console.log("game over");
-    changeProgress(true, level)
+    changeProgress(true, level);
     document.querySelector('.answers').style.display = "none";
     let result;
     if (level >= saveLevels[0] && level !== 15){
         for (let i = 0; i < saveLevels.length; i++){
             if (level < saveLevels[i]){
-                result = levelScore[saveLevels[i-1]]
+                result = levelScore[saveLevels[i - 1]];
                 break;
             }
             if (level === saveLevels[i]){
-                result = levelScore[saveLevels[i]]
+                result = levelScore[saveLevels[i]];
                 break;
             }
         }
-    }
-    else if (level === 15){
+    }else if (level === 15){
         result = levelScore[level];
-    }
-    else {
-        result = "0"
+    }else {
+        result = "0";
     }
     let text = document.getElementById('question-line');
     text.setAttribute('style', 'white-space: pre;');
@@ -368,7 +373,7 @@ function setScore() {
 }
 
 function resetUserValues() {
-    changeProgress(true, level)
+    changeProgress(true, level);
     allQuestionsData = structuredClone(questionsJson);
     document.getElementById('question-points').textContent = 0;
     level = 0;
