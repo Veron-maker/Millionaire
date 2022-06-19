@@ -3,7 +3,8 @@ async function getData(url) {
     return response.json();
 }
 
-const allQuestionsData = await getData("../resourses/questions/questions.json");
+const questionsJson = await getData("../resourses/questions/questions.json");
+let allQuestionsData = structuredClone(questionsJson);
 
 let saveLevels = [5, 10, 15]
 let levelScore = ['0', '1 000', '3 000', '5 000', '10 000', '20 000', '35 000', '50 000', '70 000', '100 000', '150 000',
@@ -368,6 +369,7 @@ function setScore() {
 
 function resetUserValues() {
     changeProgress(true, level)
+    allQuestionsData = structuredClone(questionsJson);
     document.getElementById('question-points').textContent = 0;
     level = 0;
     reloadHints(true);
