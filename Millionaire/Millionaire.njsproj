@@ -75,6 +75,9 @@
     <Content Include="static\css\styles.css" />
     <Content Include="static\html\game.html" />
     <Content Include="static\html\index.html" />
+    <Content Include="static\html\rules.html">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="static\js\script.js" />
     <Content Include="static\js\server.js" />
     <Content Include="static\resourses\.DS_Store" />
@@ -84,6 +87,8 @@
     <Content Include="static\resourses\base\menu.jpg" />
     <Content Include="static\resourses\base\results.jpg" />
     <Content Include="static\resourses\base\rules.jpg" />
+    <Content Include="static\resourses\base\rules.png" />
+    <Content Include="static\resourses\base\rules.svg" />
     <Content Include="static\resourses\buttons\game\answer\answer-actively.png" />
     <Content Include="static\resourses\buttons\game\answer\answer-disabled.png" />
     <Content Include="static\resourses\buttons\game\answer\answer-error.png" />
@@ -108,6 +113,10 @@
     <Content Include="static\resourses\buttons\home\button-rules.svg" />
     <Content Include="static\resourses\buttons\home\button-start-actively.svg" />
     <Content Include="static\resourses\buttons\home\button-start-inactively.svg" />
+    <Content Include="static\resourses\buttons\home\rules\back\button-back-actively.png" />
+    <Content Include="static\resourses\buttons\home\rules\back\button-back-inactively.png" />
+    <Content Include="static\resourses\buttons\home\rules\button-rules-actively.png" />
+    <Content Include="static\resourses\buttons\home\rules\button-rules-inactively.png" />
     <Content Include="static\resourses\buttons\home\start\button-start-actively.svg" />
     <Content Include="static\resourses\buttons\home\start\button-start-inactively.svg" />
     <Content Include="static\resourses\buttons\score\button-sum.png" />
@@ -169,6 +178,8 @@
     <Folder Include="static\resourses\buttons\game\restart\" />
     <Folder Include="static\resourses\buttons\game\time\" />
     <Folder Include="static\resourses\buttons\home\" />
+    <Folder Include="static\resourses\buttons\home\rules\" />
+    <Folder Include="static\resourses\buttons\home\rules\back\" />
     <Folder Include="static\resourses\buttons\home\start\" />
     <Folder Include="static\resourses\buttons\score\" />
     <Folder Include="static\resourses\game\" />

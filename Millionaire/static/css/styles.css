@@ -35,11 +35,13 @@ html, body {
 .menu {
     width: 30%;
     height: 40%;
-    top: 60%;
-    left: 25%;
-    position: absolute;
+    top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 div .logo#home {
@@ -69,15 +71,50 @@ div .icon#home {
     width: 25%;
 }
 
+div .menu-field {
+    width: 100%;
+    height: 30%;
+}
+
+/*---rules-page---*/
+
+.rules {
+    /*display: none;*/
+    height: 100%;
+    min-height: 100%;
+    min-width: 1024px;
+    position: relative;
+    width: auto;
+    background: url('../resourses/base/rules.png') no-repeat;
+    background-size: cover;
+}
+
+.rules-menu {
+    width: 30%;
+    height: 25%;
+    top: 75%;
+    margin-left: 11%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+div .rules-menu-field {
+    width: 100%;
+    height: 100%;
+}
 /*-buttons-*/
 
 .button-start {
     background: url('../resourses/buttons/home/start/button-start-inactively.svg');
-    position: absolute;
+    position: relative;
     width: 65%;
-    height: 25%;
+    height: 100%;
     background-size: contain;
     background-repeat: no-repeat;
+    margin-left: auto;
+    margin-right: auto;
 }
 
     .button-start:active {
@@ -97,6 +134,68 @@ div .icon#home {
         display: flex;
         justify-content: center;
     }
+
+
+
+.button-rules {
+    background: url('../resourses/buttons/home/rules/button-rules-inactively.png');
+    position: relative;
+    width: 65%;
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+    .button-rules:active {
+        background: url('../resourses/buttons/home/rules/button-rules-actively.png');
+        border-width: 0px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        display: flex;
+        justify-content: center;
+    }
+
+    .button-rules:hover {
+        background: url('../resourses/buttons/home/rules/button-rules-actively.png');
+        border-width: 0px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        display: flex;
+        justify-content: center;
+    }
+
+
+.button-back {
+    background: url('../resourses/buttons/home/rules/back/button-back-inactively.png');
+    position: relative;
+    width: 85%;
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+    .button-back:active {
+        background: url('../resourses/buttons/home/rules/back/button-back-actively.png');
+        border-width: 0px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        display: flex;
+        justify-content: center;
+    }
+
+    .button-back:hover {
+        background: url('../resourses/buttons/home/rules/back/button-back-actively.png');
+        border-width: 0px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        display: flex;
+        justify-content: center;
+    }
+
 
 /*---hall-page---*/
 .hall_screen {

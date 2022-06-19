@@ -23,7 +23,8 @@ document.querySelector('.button-restart').addEventListener('click', function() {
     document.querySelector('.answers').style.display = "block";
     show(level);
 });
-document.querySelector('.but-skip').addEventListener('click', function (){
+document.querySelector('.but-skip').addEventListener('click', function ()
+{
     document.querySelector('.call_screen').style.display = "none";
     document.querySelector('.game').style.display = "block";
 });
