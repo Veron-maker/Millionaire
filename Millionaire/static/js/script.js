@@ -54,7 +54,7 @@ function getNewQuestion(level){
 
 function show(level) {
     useFifty = false;
-    let answerBox = document.getElementsByClassName('button-answer');
+    let answerBox = document.getElementsByClassName('answer');
     if (level > 0) {
         document.querySelector('.answers').style.display = "block";
         document.querySelector('.game').style.display = "none";
@@ -64,10 +64,10 @@ function show(level) {
     document.getElementById('question-line').textContent = currentQuestion["question"];
     curAns = currentQuestion["answer"];
 
-    answerBox[0].childNodes[3].textContent = currentQuestion["variants"][0];
-    answerBox[1].childNodes[3].textContent = currentQuestion["variants"][1];
-    answerBox[2].childNodes[3].textContent = currentQuestion["variants"][2];
-    answerBox[3].childNodes[3].textContent = currentQuestion["variants"][3];
+    answerBox[0].childNodes[1].textContent = currentQuestion["variants"][0];
+    answerBox[1].childNodes[1].textContent = currentQuestion["variants"][1];
+    answerBox[2].childNodes[1].textContent = currentQuestion["variants"][2];
+    answerBox[3].childNodes[1].textContent = currentQuestion["variants"][3];
 
     if (level > 0) {
         setTimeout(() => {
@@ -85,7 +85,8 @@ show(level);
 reloadHints(false);
 
 for (let i = 0; i < answerButtons.length; i++) {
-    answerButtons[i].addEventListener('click', function () {
+    answerButtons[i].addEventListener('click', function ()
+    {
         returnRightForm(answerButtons[i], "url('../resourses/buttons/game/answer/answer-wait.png') 100% 100% no-repeat");
         buttonLock(true);
         let pickedButton = answerButtons[i];
@@ -96,7 +97,7 @@ for (let i = 0; i < answerButtons.length; i++) {
             changeProgress(false, level);
             setTimeout(() => {
                 level++;
-                returnRightForm(pickedButton, "url('../resourses/buttons/game/answer/answer-right.png') no-repeat");
+                returnRightForm(pickedButton, "url('../resourses/buttons/game/answer/answer-right.png') 100% 100% no-repeat");
             }, 1000);
             setTimeout(() => {
                 setScore();
@@ -113,8 +114,8 @@ for (let i = 0; i < answerButtons.length; i++) {
         }
         else {
             setTimeout(() => {
-                returnRightForm(pickedButton, "url('../resourses/buttons/game/answer/answer-error.png') no-repeat");
-                returnRightForm(rightAnswer, "url('../resourses/buttons/game/answer/answer-right.png') no-repeat");
+                returnRightForm(pickedButton, "url('../resourses/buttons/game/answer/answer-error.png') 100% 100% no-repeat");
+                returnRightForm(rightAnswer, "url('../resourses/buttons/game/answer/answer-right.png') 100% 100% no-repeat");
                 error = true;
             }, 1000);
             setTimeout(() => {
@@ -327,11 +328,12 @@ function returnOldForm(button){
 
 function returnRightForm(button , url){
     button.style.background = url;
-    button.style.backgroundPosition = "initial";
-    button.style.backgroundSize = "100% 100%";
-    button.style.flex = "1 0 42%";
-    button.style.display = "flex";
+    button.style.backgroundSize = "contain";
+    button.style.position = "relative";
+    button.style.width = "100%";
+    button.style.height = "40%";
     button.style.borderWidth = "0px";
+    button.style.padding = "5px";
 }
 
 function buttonLock(lock){
