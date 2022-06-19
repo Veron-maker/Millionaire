@@ -7,197 +7,223 @@
     <link rel="stylesheet" href="../css/styles.css" />
 </head>
 <body>
-<div class="game">
-    <div class="points">
-        <table id="points-table">
-            <tr>
-                <td><p class="unvanish-sum">Несгораемая сумма</p></td>
-                <td><p class="unvanish-sum" id="question-points">0</p></td>
-            </tr>
-            <tr>
-                <td><p class="current-sum">Текущая сумма</p></td>
-                <td><p class="current-sum" id="user-points">0</p></td>
-            </tr>
-        </table>
-    </div>
-    <div class="question-answers">
-        <div class="question-field">
-            <div class="question">
-                <div class="question-text">
-                    <p id="question-line">Вопрос</p>
+    <div class="game">
+        <div class="state">
+            <div class="time">
+                <p class="time-line">30</p>
+            </div>
+            <div class="points">
+                <table id="points-table">
+                    <tr>
+                        <td><p class="unvanish-sum">Несгораемая сумма</p></td>
+                        <td><p class="unvanish-sum" id="question-points">0</p></td>
+                    </tr>
+                    <tr>
+                        <td><p class="current-sum">Текущая сумма</p></td>
+                        <td><p class="current-sum" id="user-points">0</p></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    
+        <div class="question-answers">
+            <div class="question-field">
+                <div class="question">
+                    <div class="question-text">
+                        <p id="question-line">Вопрос</p>
+                    </div>
+                </div>
+            </div>
+            <div class="answers">
+                <div class="answer-table">
+                    <div class="answer-column">
+                        <button class="button-answer" id="ans1">
+                            <div class="answer-field">
+                                <span class="idAnswer">A.</span>
+                                <div class="answer">
+                                    <span id="answer1"></span>
+                                </div>
+                            </div>
+                        </button>
+                        <button class="button-answer" id="ans2">
+                            <div class="answer-field">
+                                <span class="idAnswer">B.</span>
+                                <div class="answer">
+                                    <span id="answer2"></span>
+                                </div>
+                            </div>
+                        </button>
+                    </div>
+                    <div class="answer-column">
+                        <button class="button-answer" id="ans3">
+                            <div class="answer-field">
+                                <span class="idAnswer">C.</span>
+                                <div class="answer">
+                                    <span id="answer3"></span>
+                                </div>
+                            </div>
+                        </button>
+                        <button class="button-answer" id="ans4">
+                            <div class="answer-field">
+                                <span class="idAnswer">D.</span>
+                                <div class="answer">
+                                    <span id="answer4"></span>
+                                </div>
+                            </div>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="answers">
-            <div id="answer-table">
-                <button class="button-answer" id="ans1">
-                    <p class="idAnswer">A.</p>
-                    <p class="answer-text" id="answer1">A</p>
-                </button>
-                <button class="button-answer" id="ans2">
-                    <p class="idAnswer">B.</p>
-                    <p class="answer-text" id="answer2">B</p>
-                </button>
-                <button class="button-answer" id="ans3">
-                    <p class="idAnswer">C.</p>
-                    <p class="answer-text" id="answer3">C</p>
-                </button>
-                <button class="button-answer" id="ans4">
-                    <p class="idAnswer">D.</p>
-                    <p class="answer-text" id="answer4">D</p>
-                </button>
-            </div>
+
+        <div class="menu-game">
+            <ul id="menu-table">
+                <li>
+                    <a href="index.html"> <button class="button-exit"></button> </a>
+                </li>
+                <li>
+                    <button class="button-restart"></button>
+                </li>
+            </ul>
+            <ul class="hints-table">
+                <li>
+                    <button class="fifty"></button>
+                </li>
+                <li>
+                    <button class="call"></button>
+                </li>
+                <li>
+                    <button class="hall"></button>
+                </li>
+            </ul>
         </div>
     </div>
-    <div class="menu-game">
-        <ul id="menu-table">
-            <li>
-                <a href="index.html"> <button class="button-exit"></button> </a>
-            </li>
-            <li>
-                <button class="button-restart"></button>
-            </li>
-        </ul>
-        <ul class="hints-table">
-            <li>
-                <button class="fifty"></button>
-            </li>
-            <li>
-                <button class="call"></button>
-            </li>
-            <li>
-                <button class="hall"></button>
-            </li>
-        </ul>
-    </div>
-</div>
-
-<div class="score">
-    <table class="score-table" align="center" height="100%">
-        <tbody>
-        <tr class="non-combustible-score tr15">
-            <td class="first-td">15</td>
-            <td class="second-td">⯁</td>
-            <td class="third-td">2 000 000</td>
-            <td></td>
-        </tr>
-        <tr class="tr14">
-            <td class="first-td">14</td>
-            <td class="second-td">⯁</td>
-            <td class="third-td">1 000 000</td>
-            <td></td>
-        </tr>
-        <tr class="tr13">
-            <td class="first-td">13</td>
-            <td class="second-td">⯁</td>
-            <td class="third-td">600 000</td>
-            <td></td>
-        </tr>
-        <tr class="tr12">
-            <td class="first-td">12</td>
-            <td class="second-td">⯁</td>
-            <td class="third-td">400 000</td>
-            <td></td>
-        </tr>
-        <tr class="tr11">
-            <td class="first-td">11</td>
-            <td class="second-td">⯁</td>
-            <td class="third-td">250 000</td>
-            <td></td>
-        </tr>
-        <tr class="non-combustible-score tr10">
-            <td class="first-td">10</td>
-            <td class="second-td">⯁</td>
-            <td class="third-td">150 000</td>
-            <td></td>
-        </tr>
-        <tr class="tr9">
-            <td class="first-td">9</td>
-            <td class="second-td">⯁</td>
-            <td class="third-td">100 000</td>
-            <td></td>
-        </tr>
-        <tr class="tr8">
-            <td class="first-td">8</td>
-            <td class="second-td">⯁</td>
-            <td class="third-td">70 000</td>
-            <td></td>
-        </tr>
-        <tr class="tr7">
-            <td class="first-td">7</td>
-            <td class="second-td">⯁</td>
-            <td class="third-td">50 000</td>
-            <td></td>
-        </tr>
-        <tr class="tr6">
-            <td class="first-td">6</td>
-            <td class="second-td">⯁</td>
-            <td class="third-td">35 000</td>
-            <td></td>
-        </tr>
-        <tr class="non-combustible-score tr5">
-            <td class="first-td">5</td>
-            <td class="second-td">⯁</td>
-            <td class="third-td">20 000</td>
-            <td></td>
-        </tr>
-        <tr class="tr4">
-            <td class="first-td">4</td>
-            <td class="second-td">⯁</td>
-            <td class="third-td">10 000</td>
-            <td></td>
-        </tr>
-        <tr class="tr3">
-            <td class="first-td">3</td>
-            <td class="second-td">⯁</td>
-            <td class="third-td">5 000</td>
-            <td></td>
-        </tr>
-        <tr class="tr2">
-            <td class="first-td">2</td>
-            <td class="second-td">⯁</td>
-            <td class="third-td">3 000</td>
-            <td></td>
-        </tr>
-        <tr class="tr1">
-            <td class="first-td">1</td>
-            <td class="second-td">⯁</td>
-            <td class="third-td">1 000</td>
-            <td></td>
-        </tr>
-        </tbody>
-    </table>
-</div>
-
-<div class="call_screen">
-    <div class = "call_content">
-        <img src="../resourses/game/call/hamster.png" alt="собеседник" width="15%" height="35%">
-        <img src="../resourses/game/call/voice.gif" alt="" width="15%" height="10%">
-        <span class="call_text" id="call_txt"></span>
+    
+    <div class="score">
+        <table class="score-table" align="center" height="100%">
+            <tbody>
+            <tr class="non-combustible-score tr15">
+                <td class="first-td">15</td>
+                <td class="second-td">⯁</td>
+                <td class="third-td">2 000 000</td>
+                <td></td>
+            </tr>
+            <tr class="tr14">
+                <td class="first-td">14</td>
+                <td class="second-td">⯁</td>
+                <td class="third-td">1 000 000</td>
+                <td></td>
+            </tr>
+            <tr class="tr13">
+                <td class="first-td">13</td>
+                <td class="second-td">⯁</td>
+                <td class="third-td">600 000</td>
+                <td></td>
+            </tr>
+            <tr class="tr12">
+                <td class="first-td">12</td>
+                <td class="second-td">⯁</td>
+                <td class="third-td">400 000</td>
+                <td></td>
+            </tr>
+            <tr class="tr11">
+                <td class="first-td">11</td>
+                <td class="second-td">⯁</td>
+                <td class="third-td">250 000</td>
+                <td></td>
+            </tr>
+            <tr class="non-combustible-score tr10">
+                <td class="first-td">10</td>
+                <td class="second-td">⯁</td>
+                <td class="third-td">150 000</td>
+                <td></td>
+            </tr>
+            <tr class="tr9">
+                <td class="first-td">9</td>
+                <td class="second-td">⯁</td>
+                <td class="third-td">100 000</td>
+                <td></td>
+            </tr>
+            <tr class="tr8">
+                <td class="first-td">8</td>
+                <td class="second-td">⯁</td>
+                <td class="third-td">70 000</td>
+                <td></td>
+            </tr>
+            <tr class="tr7">
+                <td class="first-td">7</td>
+                <td class="second-td">⯁</td>
+                <td class="third-td">50 000</td>
+                <td></td>
+            </tr>
+            <tr class="tr6">
+                <td class="first-td">6</td>
+                <td class="second-td">⯁</td>
+                <td class="third-td">35 000</td>
+                <td></td>
+            </tr>
+            <tr class="non-combustible-score tr5">
+                <td class="first-td">5</td>
+                <td class="second-td">⯁</td>
+                <td class="third-td">20 000</td>
+                <td></td>
+            </tr>
+            <tr class="tr4">
+                <td class="first-td">4</td>
+                <td class="second-td">⯁</td>
+                <td class="third-td">10 000</td>
+                <td></td>
+            </tr>
+            <tr class="tr3">
+                <td class="first-td">3</td>
+                <td class="second-td">⯁</td>
+                <td class="third-td">5 000</td>
+                <td></td>
+            </tr>
+            <tr class="tr2">
+                <td class="first-td">2</td>
+                <td class="second-td">⯁</td>
+                <td class="third-td">3 000</td>
+                <td></td>
+            </tr>
+            <tr class="tr1">
+                <td class="first-td">1</td>
+                <td class="second-td">⯁</td>
+                <td class="third-td">1 000</td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 
-    <div class="button-skip">
-        <button class="but-skip"></button>
-    </div>
-</div>
+    <div class="call_screen">
+        <div class = "call_content">
+            <img src="../resourses/game/call/hamster.png" alt="собеседник" width="15%" height="35%">
+            <img src="../resourses/game/call/voice.gif" alt="" width="15%" height="10%">
+            <span class="call_text" id="call_txt"></span>
+        </div>
 
-<div class="hall_screen">
-    <div class = "hall_content">
-            <div class="diagram">
-                <div class="bar" id="barA">A</div>
-                <div class="bar" id="barB">B</div>
-                <div class="bar" id="barC">C</div>
-                <div class="bar" id="barD">D</div>
-            </div>
-        <span class="hall_text" id="hall_txt">Ожидаем пока все проголосуют...</span>
+        <div class="button-skip">
+            <button class="but-skip"></button>
+        </div>
     </div>
 
-    <div class="button-skip2">
-        <button class="but-skip2"></button>
+    <div class="hall_screen">
+        <div class = "hall_content">
+                <div class="diagram">
+                    <div class="bar" id="barA">A</div>
+                    <div class="bar" id="barB">B</div>
+                    <div class="bar" id="barC">C</div>
+                    <div class="bar" id="barD">D</div>
+                </div>
+            <span class="hall_text" id="hall_txt">Ожидаем пока все проголосуют...</span>
+        </div>
+
+        <div class="button-skip2">
+            <button class="but-skip2"></button>
+        </div>
     </div>
-</div>
-<script type="module" src="../js/script.js"></script>
-</body>
-</html>
+    
+    <script type="module" src="../js/script.js"></script>
 </body>
 </html>
