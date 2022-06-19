@@ -211,20 +211,23 @@ function FindAnswer(){
             countingObj[obj[i]] = 0;
         }
     }
-    if (level <= 5){
-        CountingVotes(obj, countingObj, 3);
-    }
-    else if (level > 5 && level <= 10){
-        CountingVotes(obj, countingObj, 2);
-    }
-    else {
-        CountingVotes(obj, countingObj, 1);
-    }
+
+    CountingVotes(obj, countingObj);
 
     return countingObj;
 }
 
-function CountingVotes(obj, newObj, chance){
+function CountingVotes(obj, newObj){
+    let chance;
+    if (level <= 5){
+        chance = 3;
+    }
+    else if (level > 5 && level <= 10){
+        chance = 2;
+    }
+    else {
+        chance = 1;
+    }
     let rightNumber = parseInt(rightAnswer.id[3]);
     for (let i = 0; i <= 100; i += 1){
         let vote = Math.floor(Math.random() * (4 * chance) + 1);
@@ -237,6 +240,7 @@ function CountingVotes(obj, newObj, chance){
     }
 }
 
+
 function callToFriend(){
     document.querySelector('.game').style.display = "none";
     document.querySelector('.call_screen').style.display = "block";
@@ -247,6 +251,23 @@ function callToFriend(){
         delete obj[kickedAnswer[0]];
         delete obj[kickedAnswer[1]];
     }
+    let countingObj = {};
+    for (let i = 1; i < 5; i++){
+        if (obj[i] !== undefined){
+            countingObj[obj[i]] = 0;
+        }
+    }
+
+    CountingVotes(obj, countingObj);
+    let maxKey;
+    let maxValue = -1;
+    for (let key in countingObj){
+        if (countingObj[key] > maxValue){
+            maxKey = key;
+            maxValue = countingObj[key];
+        }
+    }
+    console.log(maxKey);
     text.innerHTML = `-Привет! Помоги мне ответить на вопрос. ${currentQuestion["question"]} <br>`;
     for (let i = 0; i < 5; i++) {
         if (obj[i] !== undefined) {
@@ -274,9 +295,10 @@ function callToFriend(){
 
     timeout += 500;
 
+
     //if 
     setTimeout(() => {
-        text.innerHTML += `Мне кажется ответ ${obj[parseInt(rightAnswer.id[3])]}`;
+        text.innerHTML += `Мне кажется ответ ${maxKey}`;
     }, timeout);
 }
 
@@ -335,16 +357,18 @@ function reloadHints(reload) {
 
 function changeProgress(restart, level){
     level++;
-    for (let i = 1; i < level; i++) {
-        let str = '.tr' + i;
-        let tr = document.querySelector(str);
-        tr.style.background = "";
-        tr.style.backgroundSize = "";
-        tr.style.backgroundPosition = "";
-        tr.style.borderWidth = "";
-        tr.style.padding = "";
+    if (restart){
+         for (let i = 1; i < level; i++) {
+             let str = '.tr' + i;
+             let tr = document.querySelector(str);
+             tr.style.background = "";
+             tr.style.backgroundSize = "";
+             tr.style.backgroundPosition = "";
+             tr.style.borderWidth = "";
+             tr.style.padding = "";
+        }
     }
-    if (!restart) {
+    else {
         let str = '.tr' + level;
         let tr = document.querySelector(str);
         tr.style.background = "url('../resourses/buttons/score/button-sum.png') no-repeat";
