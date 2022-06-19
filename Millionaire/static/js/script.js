@@ -34,7 +34,7 @@ document.querySelector('.but-skip2').addEventListener('click', function (){
 })
 
 function getCategoryQuestion(array) {
-    const rand = Math.floor(Math.random() * 4);
+    const rand = Math.floor(Math.random() * array.length);
     const randomElement = array[rand];
     array.splice(rand, 1);
     return randomElement;
@@ -73,7 +73,7 @@ function show(level) {
             document.querySelector('.answers').style.display = "block";
             document.querySelector('.game').style.display = "block";
             document.querySelector('.score').style.display = "none";
-        }, 2000);
+        }, 2500);
     }
     rightAnswer = findAnswer(level);
 }
@@ -97,7 +97,7 @@ for (let i = 0; i < answerButtons.length; i++) {
                 level++;
                 returnRightForm(pickedButton,"url('../resourses/buttons/game/answer/answer-right.png') no-repeat");
                 }
-                    , 2000);
+                    , 1000);
                 setTimeout(()=>{
                     setScore();
                 if (level !== 15) {
@@ -109,18 +109,17 @@ for (let i = 0; i < answerButtons.length; i++) {
                 }
                 else {
                     gameOver();
-                }},4000);
+                }}, 2000);
             }
             else {
                 setTimeout(()=> {
                 returnRightForm(pickedButton, "url('../resourses/buttons/game/answer/answer-error.png') no-repeat");
                 returnRightForm(rightAnswer,"url('../resourses/buttons/game/answer/answer-right.png') no-repeat");
                 error = true;
-                }
-                    ,2000)
+                }, 1000)
                 setTimeout(()=> {
                     gameOver()
-                },4000)
+                }, 2000)
             }
 
             setTimeout(()=>{
@@ -128,7 +127,7 @@ for (let i = 0; i < answerButtons.length; i++) {
                 returnOldForm(pickedButton)
                 if (error)
                     returnOldForm(rightAnswer);
-            }, 4000)
+            }, 2000)
     })
 }
 
@@ -145,7 +144,7 @@ function hallHelp(){
         document.getElementById("barB").style.height = `${obj["B"]}%`;
         document.getElementById("barC").style.height = `${obj["C"]}%`;
         document.getElementById("barD").style.height = `${obj["D"]}%`;
-    },1500);
+    },750);
 }
 
 function FindAnswer(){
@@ -189,7 +188,7 @@ function CountingVotes(obj, newObj, chance){
 function callToFriend(){
     document.querySelector('.game').style.display = "none";
     document.querySelector('.call_screen').style.display = "block";
-    let timeout = 500;
+    let timeout = 250;
     let text = document.querySelector(".call_text");
     let obj = {1 : "A", 2 :"B", 3 : "C", 4: "D"};
     if (useFifty){
@@ -212,12 +211,12 @@ function callToFriend(){
                     text.innerHTML += `${obj[i]}. ${currentQuestion["variants"][2]} <br>`
                 }, timeout);
             }
-            timeout += 500;
+            timeout += 250;
         }
     }
-    timeout+=500;
+    timeout+=250;
     setTimeout( () => {text.innerHTML += `-Xмммм.`}, timeout);
-    timeout+= 1000;
+    timeout+= 500;
     setTimeout( () => {text.innerHTML += `Мне кажется ответ ${obj[parseInt(rightAnswer.id[3])]}`}, timeout);
 }
 
@@ -357,7 +356,10 @@ function gameOver() {
     else {
         result = "0"
     }
-    document.getElementById('question-line').textContent = "Ваш счет: " + result;
+    let text = document.getElementById('question-line');
+    text.setAttribute('style', 'white-space: pre;');
+    text.textContent = "Игра закончена! Вы победили!\r\n";
+    text.textContent += "Ваш счет: " + result;
 }
 
 function setScore() {
