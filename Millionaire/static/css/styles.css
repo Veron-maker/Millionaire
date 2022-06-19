@@ -284,24 +284,38 @@ div .icon#home {
 
 /*-divs-*/
 
-div .points {
+div .state {
+    width: 98%;
+    height: 10%;
+    padding: 1%;
+    position: relative;
+    display: flex;
+}
+
+div .time {
+    height: 100%;
     width: 50%;
-    left: 50%;
+    position: relative;
+}
+
+div .points {
+    height: 100%;
+    width: 50%;
     position: relative;
 }
 
 div .question-answers {
     width: 100%;
-    height: 75%;
+    height: 65%;
     position: relative;
-    top: 5%;
     justify-content: center;
     align-items: center;
+    margin-top: 1%;
 }
 
 div .question-field {
     width: 100%;
-    height: 45%;
+    height: 50%;
     position: relative;
     display: flex;
     justify-content: center;
@@ -314,7 +328,6 @@ div .question {
     background-repeat: no-repeat;
     width: 60%;
     height: 100%;
-    color: #000000;
     -webkit-text-stroke: 1px rgba(181, 85, 227, 0.192);
     position: relative;
     display: flex;
@@ -331,17 +344,53 @@ div .question-text {
 }
 
 div .answers {
-    top: 5%;
-    height: 50%;
+    top: 10%;
+    height: 40%;
     position: relative;
 }
 
-div .menu-game{
+div .answer-table {
+    height: 100%;
+    width: 75%;
+    flex-direction: row;
+    display: flex;
+    justify-content: space-between;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div .answer-column {
+    height: 100%;
+    width: 45%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+div .answer-field {
+    display: flex;
+    justify-content: flex-start;
+    width: 70%;
+    height: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div .menu-game {
     display: inline-flex;
-    width: 95%;
+    width: 75%;
     height: 10%;
-    top: 8%;
+    top: 5%;
     position: relative;
+    justify-content: center;
+    align-items: center;
+    margin-left: 11.5%;
+}
+
+div .answer {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /*-tables-*/
@@ -354,38 +403,6 @@ table#points-table td {
     padding: 5px;
 }
 
-#answer-table{
-    width: 75%;
-    height: 80%;
-    left: 10%;
-    position: relative;
-    /* display: flex;
-    flex-flow: row wrap;
-    justify-content: flex-end; */
-}
-
-    #answer-table td {
-        width: 45%;
-        height: 50%;
-        padding-left: 10px;
-        padding-right: 10px;
-    }
-
-table.text-button{
-    width: 70%;
-    height: 70%;
-    left: 15%;
-    position: relative;
-}
-
-table.text-button td.idAnswer{
-    width: 3%;
-}
-
-    table.text-button td.answer {
-        padding: 0;
-        width: 80%;
-    }
 
 ul {
     height: 100%;
@@ -448,31 +465,20 @@ span {
     color: #000000;
     -webkit-text-stroke: 1px rgba(181, 85, 227, 0.192);
     position: relative;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
     font-family: 'IBM Plex Serif';
     font-style: italic;
     font-weight: 600;
-    font-size: 35px;
-    line-height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    font-size: 2vw;
 }
 
     .idAnswer {
         justify-content: left;
-    }
-
-    #answer1 {
-        justify-content: left;
-    }
-    #answer2 {
-        justify-content: left;
-    }
-    #answer3 {
-        justify-content: left;
-    }
-    #answer4 {
-        justify-content: left;
+        margin-left: unset;
+        margin-right: unset;
+        font-size: 2vw;
     }
 
 /*-buttons-*/
@@ -485,35 +491,34 @@ span {
     border-width: 0px;
     padding: 5px;
 }
+
 .button-answer {
-    background: url('../resourses/buttons/game/answer/answer-inactively.svg');
-    background-size: cover;
+    background: url('../resourses/buttons/game/answer/answer-inactively.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
     position: relative;
     width: 100%;
-    height: 75%;
+    height: 40%;
     border-width: 0px;
     padding: 5px;
 }
 
     .button-answer:active {
-        background: url('../resourses/buttons/game/answer/answer-actively.svg');
-        /* background-size: 100% 100%; */
-        background-size: cover;
-        border-width: 0px;
+        background: url('../resourses/buttons/game/answer/answer-actively.png');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
     }
 
     .button-answer:hover {
-        background: url('../resourses/buttons/game/answer/answer-actively.svg');
-        /* background-size: 100% 100%; */
-        background-size: cover;
-        border-width: 0px;
+        background: url('../resourses/buttons/game/answer/answer-actively.png');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
     }
 
     .buttom-answer:disabled {
-        background: url('../resourses/buttons/game/answer/answer-disabled.svg');
-        /* background-size: 100% 100%; */
-        background-size: cover;
-        border-width: 0px;
+        background: url('../resourses/buttons/game/answer/answer-disabled.png');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
     }
 
 .button-exit {
