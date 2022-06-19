@@ -357,18 +357,16 @@ function reloadHints(reload) {
 
 function changeProgress(restart, level){
     level++;
-    if (restart){
-         for (let i = 1; i < level; i++) {
-             let str = '.tr' + i;
-             let tr = document.querySelector(str);
-             tr.style.background = "";
-             tr.style.backgroundSize = "";
-             tr.style.backgroundPosition = "";
-             tr.style.borderWidth = "";
-             tr.style.padding = "";
-        }
+    for (let i = 1; i < level; i++) {
+        let str = '.tr' + i;
+        let tr = document.querySelector(str);
+        tr.style.background = "";
+        tr.style.backgroundSize = "";
+        tr.style.backgroundPosition = "";
+        tr.style.borderWidth = "";
+        tr.style.padding = "";
     }
-    else {
+    if (!restart){
         let str = '.tr' + level;
         let tr = document.querySelector(str);
         tr.style.background = "url('../resourses/buttons/score/button-sum.png') no-repeat";
