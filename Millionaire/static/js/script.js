@@ -4,6 +4,7 @@ async function getData(url) {
 }
 
 const questionsJson = await getData("../resourses/questions/questions.json");
+const timeAnswer = 30;
 let allQuestionsData = structuredClone(questionsJson);
 
 let saveLevels = [5, 10, 15];
@@ -17,6 +18,7 @@ let useFifty = false;
 let curAns = "";
 
 document.querySelector('.button-restart').addEventListener('click', function() {
+    setTimeout(updateTime, 2000);
     resetUserValues();
     document.querySelector('.answers').style.display = "block";
     show(level);
@@ -34,6 +36,45 @@ document.querySelector('.but-skip2').addEventListener('click', function (){
     document.getElementById("barC").style.height = `0%`;
     document.getElementById("barD").style.height = `0%`;
 })
+
+let flNewQuestion = false;
+let flGameOver = false;
+let flFreeze = false;
+let k = 0;
+
+setInterval(() =>
+{
+    if (flNewQuestion) {
+        setTimeout(updateTime, 2000);
+    }
+
+    if (flFreeze) {
+        return;
+    }
+
+    let timeLine = document.getElementsByClassName('time-line');
+
+    if (k == timeAnswer || flGameOver) {
+        timeLine[0].textContent = "0";
+        flFreeze = true;
+        returnRightForm(rightAnswer, "url('../resourses/buttons/game/answer/answer-right.png') 100% 100% no-repeat");
+        setTimeout(() =>
+        {
+            gameOver();
+            buttonLock(false);
+            returnOldForm(rightAnswer);
+        }, 2000);
+    }
+
+    timeLine[0].textContent = "" + (timeAnswer - k);
+    k++;
+}, 1000);
+
+function updateTime() {
+    flNewQuestion = false;
+    flFreeze = false;
+    k = 0;
+}
 
 function getCategoryQuestion(array) {
     const rand = Math.floor(Math.random() * array.length);
@@ -88,6 +129,7 @@ for (let i = 0; i < answerButtons.length; i++) {
     answerButtons[i].addEventListener('click', function ()
     {
         returnRightForm(answerButtons[i], "url('../resourses/buttons/game/answer/answer-wait.png') 100% 100% no-repeat");
+        flFreeze = true;
         buttonLock(true);
         let pickedButton = answerButtons[i];
         let answerNum = parseInt(pickedButton.id[3]);
@@ -95,31 +137,38 @@ for (let i = 0; i < answerButtons.length; i++) {
 
         if (answerNum === curAns) {
             changeProgress(false, level);
-            setTimeout(() => {
+            setTimeout(() =>
+            {
                 level++;
                 returnRightForm(pickedButton, "url('../resourses/buttons/game/answer/answer-right.png') 100% 100% no-repeat");
             }, 1000);
-            setTimeout(() => {
+            setTimeout(() =>
+            {
                 setScore();
                 if (level !== 15) {
                     if (saveLevels.indexOf(level) !== -1) {
                         document.getElementById('question-points').textContent = levelScore[level];
                     }
                     show(level);
+                    flNewQuestion = true;
                 }
                 else {
+                    flGameOver = true;
                     gameOver();
                 }
             }, 2000);
         }
         else {
-            setTimeout(() => {
+            setTimeout(() =>
+            {
                 returnRightForm(pickedButton, "url('../resourses/buttons/game/answer/answer-error.png') 100% 100% no-repeat");
                 returnRightForm(rightAnswer, "url('../resourses/buttons/game/answer/answer-right.png') 100% 100% no-repeat");
                 error = true;
             }, 1000);
-            setTimeout(() => {
-                gameOver()
+            setTimeout(() =>
+            {
+                flGameOver = true;
+                gameOver();
             }, 2000);
         }
 
@@ -129,6 +178,7 @@ for (let i = 0; i < answerButtons.length; i++) {
             if (error)
                 returnOldForm(rightAnswer);
         }, 2000);
+
     });
 }
 
@@ -284,6 +334,15 @@ function reloadHints(reload) {
 
 function changeProgress(restart, level){
     level++;
+    for (let i = 1; i < level; i++) {
+        let str = '.tr' + i;
+        let tr = document.querySelector(str);
+        tr.style.background = "";
+        tr.style.backgroundSize = "";
+        tr.style.backgroundPosition = "";
+        tr.style.borderWidth = "";
+        tr.style.padding = "";
+    }
     if (!restart) {
         let str = '.tr' + level;
         let tr = document.querySelector(str);
@@ -292,17 +351,6 @@ function changeProgress(restart, level){
         tr.style.backgroundPosition = "5px";
         tr.style.borderWidth = "0px";
         tr.style.padding = "5px";
-    }
-    else{
-        for (let i = 1; i < level; i++){
-            let str = '.tr' + i
-            let tr = document.querySelector(str);
-            tr.style.background = "";
-            tr.style.backgroundSize = "";
-            tr.style.backgroundPosition = "";
-            tr.style.borderWidth = "";
-            tr.style.padding = "";
-        }
     }
 }
 
@@ -317,12 +365,6 @@ function findAnswer(level){
 
 function returnOldForm(button){
     button.style.background = "";
-    button.style.backgroundSize = "";
-    button.style.position = "";
-    button.style.width = "";
-    button.style.height = "";
-    button.style.borderWidth = "";
-    button.style.padding = "";
 }
 
 
@@ -342,7 +384,7 @@ function buttonLock(lock){
     }
 }
 
-function gameOver() {
+function gameOver(){
     console.log("game over");
     changeProgress(true, level);
     document.querySelector('.answers').style.display = "none";
@@ -365,7 +407,10 @@ function gameOver() {
     }
     let text = document.getElementById('question-line');
     text.setAttribute('style', 'white-space: pre;');
-    text.textContent = "Игра закончена! Вы победили!\r\n";
+    text.textContent = "Игра закончена!\r\n";
+    if (level === 15) {
+        text.textContent += "Вы победили!\r\n";
+    } 
     text.textContent += "Ваш счет: " + result;
 }
 

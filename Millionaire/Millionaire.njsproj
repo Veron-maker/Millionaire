@@ -61,6 +61,7 @@
     <Content Include="resourses\buttons\game\back\back-inactively.svg" />
     <Content Include="resourses\buttons\game\restart\restart-actively.svg" />
     <Content Include="resourses\buttons\game\restart\restart-inactively.svg" />
+    <Content Include="resourses\buttons\game\time\backTime.svg" />
     <Content Include="resourses\buttons\home\button-results.svg" />
     <Content Include="resourses\buttons\home\button-rules.svg" />
     <Content Include="resourses\buttons\home\button-start-actively.svg" />
@@ -83,10 +84,10 @@
     <Content Include="static\resourses\base\menu.jpg" />
     <Content Include="static\resourses\base\results.jpg" />
     <Content Include="static\resourses\base\rules.jpg" />
-    <Content Include="static\resourses\buttons\game\answer\answer-actively.svg" />
-    <Content Include="static\resourses\buttons\game\answer\answer-disabled.svg" />
+    <Content Include="static\resourses\buttons\game\answer\answer-actively.png" />
+    <Content Include="static\resourses\buttons\game\answer\answer-disabled.png" />
     <Content Include="static\resourses\buttons\game\answer\answer-error.png" />
-    <Content Include="static\resourses\buttons\game\answer\answer-inactively.svg" />
+    <Content Include="static\resourses\buttons\game\answer\answer-inactively.png" />
     <Content Include="static\resourses\buttons\game\answer\answer-right.png" />
     <Content Include="static\resourses\buttons\game\answer\answer-wait.png" />
     <Content Include="static\resourses\buttons\game\back\back-actively.svg" />
@@ -102,6 +103,7 @@
     <Content Include="static\resourses\buttons\game\hints\hall\hall-used.svg" />
     <Content Include="static\resourses\buttons\game\restart\restart-actively.svg" />
     <Content Include="static\resourses\buttons\game\restart\restart-inactively.svg" />
+    <Content Include="static\resourses\buttons\game\time\backTime.svg" />
     <Content Include="static\resourses\buttons\home\button-results.svg" />
     <Content Include="static\resourses\buttons\home\button-rules.svg" />
     <Content Include="static\resourses\buttons\home\button-start-actively.svg" />
@@ -143,6 +145,7 @@
     <Folder Include="resourses\buttons\game\answer\" />
     <Folder Include="resourses\buttons\game\back\" />
     <Folder Include="resourses\buttons\game\restart\" />
+    <Folder Include="resourses\buttons\game\time\" />
     <Folder Include="resourses\buttons\home\" />
     <Folder Include="resourses\buttons\home\start\" />
     <Folder Include="resourses\home\" />
@@ -164,6 +167,7 @@
     <Folder Include="static\resourses\buttons\game\hints\fifty\" />
     <Folder Include="static\resourses\buttons\game\hints\hall\" />
     <Folder Include="static\resourses\buttons\game\restart\" />
+    <Folder Include="static\resourses\buttons\game\time\" />
     <Folder Include="static\resourses\buttons\home\" />
     <Folder Include="static\resourses\buttons\home\start\" />
     <Folder Include="static\resourses\buttons\score\" />

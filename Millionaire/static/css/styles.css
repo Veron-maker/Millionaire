@@ -276,6 +276,22 @@ div .time {
     height: 100%;
     width: 50%;
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15%;
+}
+
+div .back-time {
+    background-image: url('../resourses/buttons/game/time/backTime.svg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    height: 140%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
 }
 
 div .points {
@@ -452,6 +468,12 @@ span {
     font-style: italic;
     font-weight: 600;
     font-size: 2vw;
+}
+
+span.time-line {
+    color: red;
+    -webkit-text-stroke: 1px rgba(111, 18, 155, 0.192);
+    font-size: 4vw;
 }
 
     .idAnswer {
