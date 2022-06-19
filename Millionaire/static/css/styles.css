@@ -98,26 +98,6 @@ div .icon#home {
         justify-content: center;
     }
 
-/*.button-results {
-    background: url('resourses/buttons/home/button-results.svg') center no-repeat fixed;
-    position: absolute;
-    width: 410px;
-    height: 100px;
-    left: 99px;
-    top: 237px;
-    opacity: 0.7;
-}
-
-.button-rules {
-    background: url('resourses/buttons/home/button-rules.svg') center no-repeat fixed;
-    position: absolute;
-    width: 410px;
-    height: 100px;
-    left: 99px;
-    top: 347px;
-    opacity: 0.7;
-}
-*/
 /*---hall-page---*/
 .hall_screen {
     display: none;
@@ -165,8 +145,6 @@ div .icon#home {
     align-items: flex-end;
 }
 
-
-
 .hall_text {
     width: 30%;
     height: 5%;
@@ -208,6 +186,8 @@ div .icon#home {
     background-size: cover;
     border-width: 0;
 }
+
+
 /*---call-page---*/
 
 .call_screen {
@@ -665,12 +645,3 @@ span {
 .score-table .non-combustible-score{
     color: #FF9753;
 }
-
-/*.score-table .tr1{
-    background-image: url("../resourses/buttons/score/button-sum.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: 5px;
-    border-width: 0px;
-    padding: 5px;
-}*/
