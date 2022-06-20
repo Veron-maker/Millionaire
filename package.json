@@ -17,6 +17,7 @@
         "webpack-cli": "~3.3.11"
     },
     "scripts": {
+        "start": "node ./staatic/js/server.js",
         "build": "webpack-cli ./app.tsx --config webpack-config.js"
     }
 }
