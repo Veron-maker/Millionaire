@@ -74,6 +74,7 @@ setInterval(() =>
 function updateTime() {
     flNewQuestion = false;
     flFreeze = false;
+    flGameOver = false;
     k = 0;
 }
 
